@@ -36,11 +36,11 @@ public class ViewZoneCheck : MonoBehaviour
             {
                 //enemyGun.TryToFireGun();
                 parent.gameObject.GetComponent<NavmeshAgentScript>().AIState = 1; // HEAD TOWARDS PLAYER
-                Debug.Log("SIT");
                 enemyGun.TryToFireGun();
             }
             else
             {
+                enemyGun.TryToFireGun();
                 parent.gameObject.GetComponent<NavmeshAgentScript>().AIState = 2;
             }            
         }
