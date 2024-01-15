@@ -125,6 +125,7 @@ public class NavmeshAgentScript : MonoBehaviour
             seenDist = Vector3.Distance(lastSeenAt, guardPosition);
             if (seenDist > 0.5)
             {
+                Invoke ("TryToFireGun", delay);
                 agent.SetDestination(lastSeenAt);
             }
             else if (seenDist <= 0.5)
