@@ -26,7 +26,7 @@ public class EnemyGun : MonoBehaviour
    private IEnumerator FireDelay()
    {
       shootingState = true;
-      yield return new WaitForSeconds(1f);
+      yield return new WaitForSeconds(0.3f);
       GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation);
       shootingState = false;
    }
