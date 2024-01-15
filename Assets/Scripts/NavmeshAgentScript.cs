@@ -29,7 +29,7 @@ public class NavmeshAgentScript : MonoBehaviour
     public Vector3 lastSeenAt;
     public float delay = 3f;
     public float patrolCheckRange;
-    
+
     public bool jobIsPatrol;
     public bool jobIsStandGaurd;
 
