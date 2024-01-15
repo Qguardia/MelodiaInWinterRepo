@@ -4,21 +4,30 @@ using UnityEngine;
 
 public class EnemyGun : MonoBehaviour
 {
-    public GameObject bulletPrefab;
-    GameObject bulletSpawnPoint;
+   public GameObject bulletPrefab;
+   public GameObject bulletSpawnPoint;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        bulletSpawnPoint = transform.GetChild(0).gameObject;
-    }
+   private bool shootingState = false;
 
-    // Update is called once per frame
-    void Update()
-    {
-        /*if
-        {
-            GameObject bullet = Instantiate(bulletPrefab,bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation);
-        }*/
-    }
+   //Start is called before the first frame update
+   void Start()
+   {
+      bulletSpawnPoint = transform.GetChild(0).gameObject;
+   }
+
+   public void TryToFireGun()
+   {
+      if (shootingState == false) 
+      {
+         StartCoroutine(FireDelay());
+      }
+   }
+
+   private IEnumerator FireDelay()
+   {
+      shootingState = true;
+      yield return new WaitForSeconds(1f);
+      GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation);
+      shootingState = false;
+   }
 }

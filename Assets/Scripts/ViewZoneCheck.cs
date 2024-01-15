@@ -16,13 +16,14 @@ public class ViewZoneCheck : MonoBehaviour
 
     public GameObject lightChecker;
 
+    public EnemyGun enemyGun;
+
     void Start()
     {
         hitLayers = LayerMask.GetMask("Player") | LayerMask.GetMask("Default") | LayerMask.GetMask("Environment");
         target = GameObject.FindGameObjectWithTag("PlayerBody").transform;
         sightRange = parent.GetComponent<NavmeshAgentScript>().sightRange;
         lightChecker = GameObject.Find("lightChecker");
-
     }
 
    private void FixedUpdate()
@@ -34,6 +35,9 @@ public class ViewZoneCheck : MonoBehaviour
             if (inLOS == true)
             {
                 parent.gameObject.GetComponent<NavmeshAgentScript>().AIState = 1; // HEAD TOWARDS PLAYER
+
+                Debug.Log("I'm here!");
+                enemyGun.TryToFireGun();
             }
             else
             {
@@ -53,9 +57,17 @@ public class ViewZoneCheck : MonoBehaviour
             if (inLOS == true)
             {
                 parent.gameObject.GetComponent<NavmeshAgentScript>().AIState = 1; // HEAD TOWARDS PLAYER
+                
+                //StartCoroutine(LOSDelay()); // Fire bullet before delay
             }
         }
     }
+
+   /* private IEnumerator LOSDelay()
+    {
+        yield return new WaitForSeconds(3f);
+        GameObject bullet = Instantiate(bulletPrefab,bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation);
+    }*/
 
     private void OnTriggerExit(Collider other)
     {
