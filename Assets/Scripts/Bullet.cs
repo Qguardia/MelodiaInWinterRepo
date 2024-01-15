@@ -22,12 +22,12 @@ public class Bullet : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Enemy")
         {
             Instantiate(splatEffect, collision.transform.position, Quaternion.identity);
             Destroy(collision.gameObject); //TEMP INSTAKILL
         }
-        if (collision.gameObject.tag != "Enemy")
+        if (collision.gameObject.tag != "Player")
         {
             DestroySelf();
         }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 // THIS PLAYER MOVE CLASS WILL ALLOW THE GAMEOBJECT TO MOVE BASED ON CHARACTERCONTROLLER
-    
+
 public class FPSMovement : MonoBehaviour
 {
     // VARS
@@ -20,7 +20,6 @@ public class FPSMovement : MonoBehaviour
     public LayerMask m_groundMask;
     private bool m_isGrounded; 
 
-    public bool isInputting;
     public KeyCode m_forward;
     public KeyCode m_back;
     public KeyCode m_left;
@@ -29,7 +28,6 @@ public class FPSMovement : MonoBehaviour
     public KeyCode m_jump;
     public KeyCode m_crouch;
 
-    public SoundBox soundBox;
     // crouching vars
 
     public bool crouching;
@@ -63,20 +61,12 @@ public class FPSMovement : MonoBehaviour
 
         if (Input.GetKey(m_forward) || Input.GetKey(m_back) || Input.GetKey(m_left) || Input.GetKey(m_right))
         {
-            isInputting = true;
             move = transform.right * x + transform.forward * z; // calculate the move vector (direction)          
-        }
-
-        else 
-        {
-            isInputting = false;
         }
 
         MovePlayer(move); // Run the MovePlayer function with the vector3 value move
         RunCheck(); // Checks the input for run
         JumpCheck(); // Checks if we can jump
-
-        FindSoundOutput();
 
         if (Input.GetKeyDown(m_crouch))
         {
@@ -95,7 +85,6 @@ public class FPSMovement : MonoBehaviour
                         crouchSwitched = false;
                     }
                 }
-
             }
             else
             {
@@ -174,26 +163,5 @@ public class FPSMovement : MonoBehaviour
             }
         }
 
-    }
-
-    void FindSoundOutput()
-    {
-        if (!isInputting) 
-        {
-            soundBox.gameObject.SetActive(false);
-            return;
-        }
-
-        if (crouching) 
-        {
-            soundBox.gameObject.SetActive(true);
-            soundBox.CrouchSoundRange();
-        }
-
-        else 
-        {
-            soundBox.gameObject.SetActive(true);
-            soundBox.NormalSoundRange();
-        }
     }
 }
