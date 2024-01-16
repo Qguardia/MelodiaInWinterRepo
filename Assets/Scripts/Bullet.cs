@@ -10,10 +10,10 @@ public class Bullet : MonoBehaviour
     //Damage Scripts below
     public bool instaDeathAttacker;
     public float attackRate;
-    public float damageMulitplier = 1.0f;
+    public float damageMulitplier;
     private float timer;
     public GameObject player;
-    public float health;
+    public float currentHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -32,9 +32,11 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-           // Instantiate(splatEffect, collision.transform.position, Quaternion.identity);
-           // Destroy(collision.gameObject); //TEMP INSTAKILL
+            currentHealth = collision.gameObject.GetComponent<PlayerHealth>().playerHealth;
 
+            // Instantiate(splatEffect, collision.transform.position, Quaternion.identity);
+            // Destroy(collision.gameObject); //TEMP INSTAKILL
+            collision.gameObject.GetComponent<PlayerHealth>().playerHealth = currentHealth - (75);
             
            DestroySelf();
         }
@@ -48,28 +50,5 @@ public class Bullet : MonoBehaviour
     void DestroySelf()
     {
         Destroy(gameObject);
-    }
-        private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            if (instaDeathAttacker == true)
-            {
-                other.gameObject.GetComponent<PlayerHealth>().playerDeath();
-            }
-            else
-            {
-                health = other.gameObject.GetComponent<PlayerHealth>().playerHealth;
-
-                timer = timer + Time.deltaTime;
-
-                if (timer >= attackRate)
-                {
-                    other.gameObject.GetComponent<PlayerHealth>().playerHealth = health - 1 * damageMulitplier;
-                    timer = 0.0f;
-                }
-            }
-            
-        }
     }
 }
