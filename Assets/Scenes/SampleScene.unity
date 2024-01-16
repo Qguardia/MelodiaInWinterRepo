@@ -4569,8 +4569,9 @@ GameObject:
   - component: {fileID: 605360892}
   - component: {fileID: 605360891}
   - component: {fileID: 605360895}
+  - component: {fileID: 605360896}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: LuteObjective
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4677,6 +4678,30 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &605360896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605360890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff50ab5e878819499be913cd30d3075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectiveID: 5
+  objectiveName: 
+  objectiveActive: 0
+  objectiveCompleted: 0
+  objectivePartsTotal: 0
+  objectiveStep: 0
+  involvesItem: 0
+  itemRequired: {fileID: 0}
+  involvesItemLoss: 0
+  itemToLose: {fileID: 0}
+  onObjectiveActivated: {fileID: 0}
+  onObjectiveCompleted: {fileID: 0}
 --- !u!1 &610987411
 GameObject:
   m_ObjectHideFlags: 0
@@ -8368,8 +8393,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009263170}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.02, y: 0.7, z: -0.018}
-  m_LocalScale: {x: 0.954, y: 1, z: 0.9699}
+  m_LocalPosition: {x: -0, y: 0.7, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 605360894}
