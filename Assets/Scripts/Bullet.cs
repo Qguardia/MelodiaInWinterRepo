@@ -6,6 +6,14 @@ public class Bullet : MonoBehaviour
 {
     public float bulletSpeed = 100.0f;
     public GameObject splatEffect;
+    
+    //Damage Scripts below
+    public bool instaDeathAttacker;
+    public float attackRate;
+    public float damageMulitplier;
+    private float timer;
+    public GameObject player;
+    public float currentHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -24,10 +32,15 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            Instantiate(splatEffect, collision.transform.position, Quaternion.identity);
-            Destroy(collision.gameObject); //TEMP INSTAKILL
+            currentHealth = collision.gameObject.GetComponent<PlayerHealth>().playerHealth;
+
+            // Instantiate(splatEffect, collision.transform.position, Quaternion.identity);
+            // Destroy(collision.gameObject); //TEMP INSTAKILL
+            collision.gameObject.GetComponent<PlayerHealth>().playerHealth = currentHealth - (75);
+            
+           DestroySelf();
         }
-        if (collision.gameObject.tag != "Player")
+        if (collision.gameObject.tag != "Enemy")
         {
             DestroySelf();
         }
