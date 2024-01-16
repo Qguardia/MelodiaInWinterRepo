@@ -6,6 +6,8 @@ public class TriggerChest : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject objectToMove;
+    public string stateName;
+
     void Start()
     {
         
@@ -20,7 +22,7 @@ public class TriggerChest : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            objectToMove.GetComponent<Animator>().SetTrigger("TriggerPlatform");
+            objectToMove.GetComponent<Animator>().Play(stateName);
         }
     }
 }
