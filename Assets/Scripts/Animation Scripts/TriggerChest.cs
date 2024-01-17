@@ -5,6 +5,9 @@ using UnityEngine;
 public class TriggerChest : MonoBehaviour
 {
     // Start is called before the first frame update
+    public GameObject objectToMove;
+    public string stateName;
+
     void Start()
     {
         
@@ -14,5 +17,12 @@ public class TriggerChest : MonoBehaviour
     void Update()
     {
         
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            objectToMove.GetComponent<Animator>().Play(stateName);
+        }
     }
 }
