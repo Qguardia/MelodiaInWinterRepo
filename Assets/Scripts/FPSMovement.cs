@@ -1,4 +1,6 @@
-﻿﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 // THIS PLAYER MOVE CLASS WILL ALLOW THE GAMEOBJECT TO MOVE BASED ON CHARACTERCONTROLLER
 
@@ -29,6 +31,7 @@ public class FPSMovement : MonoBehaviour
     public KeyCode m_sprint;
     public KeyCode m_jump;
     public KeyCode m_crouch;
+    public KeyCode m_ability;
 
     public SoundBox soundBox;
     // crouching vars
@@ -41,10 +44,22 @@ public class FPSMovement : MonoBehaviour
     public float headRoom;
     private bool crouchSwitched;
 
+    public bool hasAbility = true;
+    
+    
+    // ability activation and delay
+    public bool abilityactive;
+    public bool canUseAbility;
+
+    public float abilityActiveSeconds;
+    public float abilityCooldownSeconds;
+
     // Start is called before the first frame update
     void Awake()
     {
         m_finalSpeed = m_movementSpeed;
+
+        canUseAbility = true;
     }
 
     // Update is called once per frame
@@ -71,6 +86,13 @@ public class FPSMovement : MonoBehaviour
         else 
         {
             isInputting = false;
+        }
+
+        if (Input.GetKeyDown(m_ability) && canUseAbility)
+        {
+            abilityactive = true;
+            canUseAbility = false;
+            StartCoroutine(AbilityCoroutine());
         }
 
         MovePlayer(move); // Run the MovePlayer function with the vector3 value move
@@ -179,6 +201,14 @@ public class FPSMovement : MonoBehaviour
 
     void FindSoundOutput()
     {
+        if (abilityactive)
+        {
+            Debug.Log("MakeNoise");
+            soundBox.gameObject.SetActive(true);
+            soundBox.AbilitySoundRange();
+            return;
+        }
+
         if (!isInputting) 
         {
             soundBox.gameObject.SetActive(false);
@@ -196,5 +226,16 @@ public class FPSMovement : MonoBehaviour
             soundBox.gameObject.SetActive(true);
             soundBox.NormalSoundRange();
         }
+    }
+
+    private IEnumerator AbilityCoroutine()
+    {
+        yield return new WaitForSeconds(abilityActiveSeconds);
+        Debug.Log("Ability has ended");
+        abilityactive = false;
+
+        yield return new WaitForSeconds(abilityCooldownSeconds);
+        Debug.Log("Ability is recharged");
+        canUseAbility = true;
     }
 }
