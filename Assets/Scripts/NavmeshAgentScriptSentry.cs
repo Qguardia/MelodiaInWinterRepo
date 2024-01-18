@@ -30,8 +30,8 @@ public class NavmeshAgentScriptSentry : MonoBehaviour
     public float delay = 3f;
     public float patrolCheckRange;
 
-    public bool jobIsStandGaurd;
     public bool jobIsPatrol;
+    public bool jobIsStandGaurd;
     // This enemy uses an integer to flag the AI state:
 
     // 1 = Head to the player and raycast to check LOS again
@@ -110,8 +110,8 @@ public class NavmeshAgentScriptSentry : MonoBehaviour
         if (AIState == 1)
         {
             agent.speed = chaseSpeed;
-            agent.SetDestination(target.position);
             lastSeenAt = target.transform.position;
+            Invoke("TryToFireGun", delay);
             if (player.GetComponent<PlayerHealth>().playerIsAlive == false) // If player is dead, AI goes to patrol
             {
                 AIState = 3;
