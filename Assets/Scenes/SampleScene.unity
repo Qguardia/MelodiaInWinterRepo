@@ -2887,6 +2887,7 @@ Transform:
   - {fileID: 2083139745}
   - {fileID: 12855674}
   - {fileID: 496113085137236674}
+  - {fileID: 1842415908}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3018,6 +3019,70 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330756309}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &337883260 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5369045992556719698, guid: 1bc9aae09b6e0a747a1fb4c3dfad2ecb, type: 3}
+  m_PrefabInstance: {fileID: 1229989142}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &337883262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337883260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f14fdf3dc310154b9ab4b1a1836756e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 4fa13b8774a845d419ec66a0fa33212d, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 337883263}
+        m_TargetAssemblyTypeName: NewTextSet, Assembly-CSharp
+        m_MethodName: UpdateTextFields
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &337883263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337883260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4de3e7f48b801b45b50b3c3078cdbe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateThis: {fileID: 337883264}
+  newPopupTexts:
+  - Well, i found one
+  - Now then...
+  - 'let''s see how this goes '
+  existingTextFields: 0
+  newTextIsRepeatable: 0
+  onNewTextExhausted: {fileID: 11400000, guid: c893cf3a9a8ea9942b4a15dbd0ec22d7, type: 2}
+--- !u!114 &337883264 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5369045992556719697, guid: 1bc9aae09b6e0a747a1fb4c3dfad2ecb, type: 3}
+  m_PrefabInstance: {fileID: 1229989142}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337883260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33e5c394cdcb8bb449811a29fec7020e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &343053772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3216,7 +3281,7 @@ MonoBehaviour:
   itemRequired: {fileID: 11400000, guid: f10d46f61b97d9443b8d49993cecefe9, type: 2}
   involvesItemLoss: 0
   itemToLose: {fileID: 0}
-  onObjectiveActivated: {fileID: 0}
+  onObjectiveActivated: {fileID: 11400000, guid: 4df44f858ba2aa34c9ac9bf0f4268fd3, type: 2}
   onObjectiveCompleted: {fileID: 0}
 --- !u!4 &388385656 stripped
 Transform:
@@ -3705,6 +3770,103 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bc9aae09b6e0a747a1fb4c3dfad2ecb, type: 3}
+--- !u!1001 &492798015
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 301993945}
+    m_Modifications:
+    - target: {fileID: 1971663412055501428, guid: 303ac5638bc63144c943ea5b9ef24baa, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 4348581065953789618}
+    - target: {fileID: 1971663412055501428, guid: 303ac5638bc63144c943ea5b9ef24baa, type: 3}
+      propertyPath: attackRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971663412055501428, guid: 303ac5638bc63144c943ea5b9ef24baa, type: 3}
+      propertyPath: instaDeathAttacker
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3384619031738219674, guid: 303ac5638bc63144c943ea5b9ef24baa, type: 3}
+      propertyPath: m_Name
+      value: Enemy-SentryShoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: sightRange
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: wayPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1899095436}
+    - target: {fileID: 3384619031738219679, guid: 303ac5638bc63144c943ea5b9ef24baa, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3384619031738219679, guid: 303ac5638bc63144c943ea5b9ef24baa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 49.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 3384619031738219679, guid: 303ac5638bc63144c943ea5b9ef24baa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.3000488
+      objectReference: {fileID: 0}
+    - target: {fileID: 3384619031738219679, guid: 303ac5638bc63144c943ea5b9ef24baa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3384619031738219679, guid: 303ac5638bc63144c943ea5b9ef24baa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3384619031738219679, guid: 303ac5638bc63144c943ea5b9ef24baa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3384619031738219679, guid: 303ac5638bc63144c943ea5b9ef24baa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3384619031738219679, guid: 303ac5638bc63144c943ea5b9ef24baa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3384619031738219679, guid: 303ac5638bc63144c943ea5b9ef24baa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3384619031738219679, guid: 303ac5638bc63144c943ea5b9ef24baa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3384619031738219679, guid: 303ac5638bc63144c943ea5b9ef24baa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7454355864449823501, guid: 303ac5638bc63144c943ea5b9ef24baa, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 4348581065953789618}
+    - target: {fileID: 7454355864449823501, guid: 303ac5638bc63144c943ea5b9ef24baa, type: 3}
+      propertyPath: attackRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7454355864449823501, guid: 303ac5638bc63144c943ea5b9ef24baa, type: 3}
+      propertyPath: bulletSpeed
+      value: 800000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7454355864449823501, guid: 303ac5638bc63144c943ea5b9ef24baa, type: 3}
+      propertyPath: damageMulitplier
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 7454355864449823501, guid: 303ac5638bc63144c943ea5b9ef24baa, type: 3}
+      propertyPath: instaDeathAttacker
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 303ac5638bc63144c943ea5b9ef24baa, type: 3}
 --- !u!1 &507818330
 GameObject:
   m_ObjectHideFlags: 0
@@ -6857,6 +7019,91 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!1001 &1229989142
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2035281572}
+    m_Modifications:
+    - target: {fileID: 5369045992556719697, guid: 1bc9aae09b6e0a747a1fb4c3dfad2ecb, type: 3}
+      propertyPath: initialMessage
+      value: Press E for message...
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369045992556719697, guid: 1bc9aae09b6e0a747a1fb4c3dfad2ecb, type: 3}
+      propertyPath: onTextExhausted
+      value: 
+      objectReference: {fileID: 11400000, guid: 5c725d8642fa5c54a8089ad5faf309a5, type: 2}
+    - target: {fileID: 5369045992556719697, guid: 1bc9aae09b6e0a747a1fb4c3dfad2ecb, type: 3}
+      propertyPath: isRepeatableMessage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369045992556719697, guid: 1bc9aae09b6e0a747a1fb4c3dfad2ecb, type: 3}
+      propertyPath: popupTexts.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369045992556719697, guid: 1bc9aae09b6e0a747a1fb4c3dfad2ecb, type: 3}
+      propertyPath: popupTexts.Array.data[0]
+      value: It's been a while...
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369045992556719697, guid: 1bc9aae09b6e0a747a1fb4c3dfad2ecb, type: 3}
+      propertyPath: popupTexts.Array.data[1]
+      value: Need to retrive my instrument
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369045992556719697, guid: 1bc9aae09b6e0a747a1fb4c3dfad2ecb, type: 3}
+      propertyPath: popupTexts.Array.data[2]
+      value: Go - Return when you find one.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369045992556719698, guid: 1bc9aae09b6e0a747a1fb4c3dfad2ecb, type: 3}
+      propertyPath: m_Name
+      value: GiveQuestLute
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369045992556719701, guid: 1bc9aae09b6e0a747a1fb4c3dfad2ecb, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369045992556719701, guid: 1bc9aae09b6e0a747a1fb4c3dfad2ecb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 28.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369045992556719701, guid: 1bc9aae09b6e0a747a1fb4c3dfad2ecb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369045992556719701, guid: 1bc9aae09b6e0a747a1fb4c3dfad2ecb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369045992556719701, guid: 1bc9aae09b6e0a747a1fb4c3dfad2ecb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369045992556719701, guid: 1bc9aae09b6e0a747a1fb4c3dfad2ecb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369045992556719701, guid: 1bc9aae09b6e0a747a1fb4c3dfad2ecb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369045992556719701, guid: 1bc9aae09b6e0a747a1fb4c3dfad2ecb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369045992556719701, guid: 1bc9aae09b6e0a747a1fb4c3dfad2ecb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369045992556719701, guid: 1bc9aae09b6e0a747a1fb4c3dfad2ecb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369045992556719701, guid: 1bc9aae09b6e0a747a1fb4c3dfad2ecb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1bc9aae09b6e0a747a1fb4c3dfad2ecb, type: 3}
 --- !u!1 &1339748238
 GameObject:
   m_ObjectHideFlags: 0
@@ -8517,6 +8764,28 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1902767946727389364, guid: c2efe41b2ffe1df46908a0776d18ec58, type: 3}
   m_PrefabInstance: {fileID: 1902767945668427136}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1842415907 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3384619031738219674, guid: 303ac5638bc63144c943ea5b9ef24baa, type: 3}
+  m_PrefabInstance: {fileID: 492798015}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1842415908 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3384619031738219679, guid: 303ac5638bc63144c943ea5b9ef24baa, type: 3}
+  m_PrefabInstance: {fileID: 492798015}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1842415915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842415907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d3105c3420e774099f97183cab99ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1854834060
 GameObject:
   m_ObjectHideFlags: 0
@@ -8614,6 +8883,37 @@ Transform:
   m_Father: {fileID: 1717064876}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &1899095436
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1899095437}
+  m_Layer: 0
+  m_Name: GuardStation1 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1899095437
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899095436}
+  m_LocalRotation: {x: -0, y: 0.18961328, z: -0, w: 0.9818589}
+  m_LocalPosition: {x: 0.9, y: -0.4400488, z: -0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1842415908}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 21.86, z: 0}
 --- !u!1 &1900898133
 GameObject:
   m_ObjectHideFlags: 0
@@ -9475,7 +9775,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy-StandingGuardShoot
       objectReference: {fileID: 0}
-    - target: {fileID: 3384619031738219676, guid: 303ac5638bc63144c943ea5b9ef24baa, type: 3}
+    - target: {fileID: 0}
       propertyPath: wayPoints.Array.data[0]
       value: 
       objectReference: {fileID: 1668259909}
