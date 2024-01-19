@@ -8,7 +8,7 @@ public class NavmeshAgentScriptSentry : MonoBehaviour
     // THIS SCRIPT IS ALL ABOUT SETTING MOVEMENT ORDERS TO A GUARD. 
 
     public Transform target; //This is the player's body's transform
-    public GameObject player; 
+    public GameObject player;
     NavMeshAgent agent;
     public GameObject[] wayPoints;
 
@@ -32,6 +32,7 @@ public class NavmeshAgentScriptSentry : MonoBehaviour
 
     public bool jobIsPatrol;
     public bool jobIsStandGaurd;
+
     // This enemy uses an integer to flag the AI state:
 
     // 1 = Head to the player and raycast to check LOS again
@@ -49,7 +50,7 @@ public class NavmeshAgentScriptSentry : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         PatrolPoint = 0;
         PatrolPointCount = wayPoints.Length;
-        patrolCheckRange = 0.5f;
+        patrolCheckRange = 1.2f;
 
         if (!jobIsPatrol && !jobIsStandGaurd)
         {
@@ -110,8 +111,8 @@ public class NavmeshAgentScriptSentry : MonoBehaviour
         if (AIState == 1)
         {
             agent.speed = chaseSpeed;
+            agent.SetDestination(target.position);
             lastSeenAt = target.transform.position;
-            Invoke("TryToFireGun", delay);
             if (player.GetComponent<PlayerHealth>().playerIsAlive == false) // If player is dead, AI goes to patrol
             {
                 AIState = 3;
@@ -124,7 +125,7 @@ public class NavmeshAgentScriptSentry : MonoBehaviour
             seenDist = Vector3.Distance(lastSeenAt, guardPosition);
             if (seenDist > 0.5)
             {
-                Invoke ("TryToFireGun", delay);
+                Invoke("TryToFireGun", delay);
                 agent.SetDestination(lastSeenAt);
             }
             else if (seenDist <= 0.5)
@@ -140,7 +141,7 @@ public class NavmeshAgentScriptSentry : MonoBehaviour
             currentDestination = wayPoints[PatrolPoint].transform;
             dist = Vector3.Distance(currentDestination.position, transform.position);
             //Debug.Log("No of points: " + PatrolPointCount + " Current: " + PatrolPoint);
-
+            Debug.Log("HI");
             if (dist > patrolCheckRange)
             {
                 agent.SetDestination(currentDestination.position);
@@ -153,7 +154,7 @@ public class NavmeshAgentScriptSentry : MonoBehaviour
             else if (dist <= patrolCheckRange && PatrolPoint < (PatrolPointCount - 1))
             {
                 PatrolPoint++;
-                
+
             }
         }
 
@@ -182,18 +183,6 @@ public class NavmeshAgentScriptSentry : MonoBehaviour
         if (AIState == 6)
         {
             // Set up to head to a location given by an alarm or something. Needs a 'Last Seen At'
-            agent.speed = chaseSpeed;
-            seenDist = Vector3.Distance(lastSeenAt, guardPosition);
-            if (seenDist > 0.5)
-            {
-                Invoke ("TryToFireGun", delay);
-                agent.SetDestination(lastSeenAt);
-            }
-            else if (seenDist <= 0.5)
-            {
-                Invoke("DelayedSwitch", delay);
-                seenDist = 100;
-            }
         }
     }
 }
