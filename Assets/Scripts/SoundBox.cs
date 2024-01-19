@@ -16,10 +16,14 @@ public class SoundBox : MonoBehaviour
     void OnTriggerEnter(Collider col) 
     {
         NavmeshAgentScript navmeshComponent = col.GetComponent<NavmeshAgentScript>();
-        
+        NavMeshAgentSentry navmeshComponentSEN = col.GetComponent<NavMeshAgentSentry>();
         if (navmeshComponent != null) 
         {
             navmeshComponent.AIState = 1; //Chase the player
+        }
+        if (navmeshComponentSEN != null)
+        {
+            navmeshComponentSEN.AIState = 1;
         }
     }
 

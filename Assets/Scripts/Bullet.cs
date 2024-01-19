@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float bulletSpeed = 100.0f;
+    public float bulletSpeed = 100f;
     public GameObject splatEffect;
     
     //Damage Scripts below

@@ -1,14 +1,14 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NavmeshAgentScript : MonoBehaviour
+public class NavMeshAgentSentry : MonoBehaviour
 {
     // THIS SCRIPT IS ALL ABOUT SETTING MOVEMENT ORDERS TO A GUARD. 
 
     public Transform target; //This is the player's body's transform
-    public GameObject player; 
+    public GameObject player;
     NavMeshAgent agent;
     public GameObject[] wayPoints;
 
@@ -111,7 +111,10 @@ public class NavmeshAgentScript : MonoBehaviour
         if (AIState == 1)
         {
             agent.speed = chaseSpeed;
-            agent.SetDestination(target.position);
+            //agent.SetDestination(target.position);
+
+            transform.LookAt(target.position);
+
             lastSeenAt = target.transform.position;
             if (player.GetComponent<PlayerHealth>().playerIsAlive == false) // If player is dead, AI goes to patrol
             {
@@ -141,7 +144,7 @@ public class NavmeshAgentScript : MonoBehaviour
             currentDestination = wayPoints[PatrolPoint].transform;
             dist = Vector3.Distance(currentDestination.position, transform.position);
             //Debug.Log("No of points: " + PatrolPointCount + " Current: " + PatrolPoint);
-            Debug.Log("HI"); 
+            Debug.Log("HI");
             if (dist > patrolCheckRange)
             {
                 agent.SetDestination(currentDestination.position);
@@ -154,13 +157,13 @@ public class NavmeshAgentScript : MonoBehaviour
             else if (dist <= patrolCheckRange && PatrolPoint < (PatrolPointCount - 1))
             {
                 PatrolPoint++;
-                
+
             }
         }
 
         if (AIState == 4) // GUARD WHERE YOU ARE.
         {
-            // NOTHING!
+            //DO NOTHING!
         }
 
         if (AIState == 5) // RETURN TO GUARD STATION
