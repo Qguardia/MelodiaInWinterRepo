@@ -3,34 +3,23 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Enemy
-  - Ally
-  - Light
-  - Interact
-  - Environment
-  - PlayerBody
-  - StartPoint
-  - CheckPoint
-  - GameManager
-  - Collectable
-  - Carryable
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - PlayerLightSphere
+  - 
   - Water
   - UI
-  - Ally
-  - Floor
-  - Player
-  - Camera
-  - Enemy
-  - Environment
-  - Light
-  - PostProcess
-  - CarryItem
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
