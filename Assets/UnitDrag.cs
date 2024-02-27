@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class UnitDrag : MonoBehaviour
 {
-    //Camera myCam
-    //[SerializeField];
+    Camera myCam;
+    [SerializeField]
     RectTransform boxVisual;
     // Start is called before the first frame update
 
@@ -14,7 +14,7 @@ public class UnitDrag : MonoBehaviour
     Vector2 endPosition;
     void Start()
     {
-        //myCam = Camera.main;
+        myCam = Camera.main;
         startPosition = Vector2.zero;
         endPosition = Vector2.zero;
         DrawVisual();
