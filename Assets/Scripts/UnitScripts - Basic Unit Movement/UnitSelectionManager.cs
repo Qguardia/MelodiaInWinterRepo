@@ -52,24 +52,44 @@ public class UnitSelectionManager : MonoBehaviour
                 }
             }
         }
+        if (Input.GetMouseButtonDown(1) && UnitsSelected.Count > 0)
+        {
+            RaycastHit hit;
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, ground))
+            {
+                groundMarker.transform.position = hit.point;
+
+                groundMarker.SetActive(false);
+                groundMarker.SetActive(true);
+            }
+        }
     }
      
     private void clickSelect(GameObject unit)
     {
         DeselectAll();
         UnitsSelected.Add(unit);
+        UnitSelectedIndicator(unit, true);
         EnableUnitMovement(unit, true);
     }
     private void EnableUnitMovement(GameObject unit, bool shouldMove)
     {
         unit.GetComponent<UnitMovement>().enabled = shouldMove; 
     }
+    private void UnitSelectedIndicator(GameObject unit, bool isVisible)
+    {
+        unit.transform.GetChild(0).gameObject.SetActive(isVisible);
+    }
     private void DeselectAll()
     {
         foreach (var unit in UnitsSelected)
         {
             EnableUnitMovement(unit, false);
+            UnitSelectedIndicator(unit, false);
         }
+        groundMarker.SetActive(false);
         UnitsSelected.Clear();
     }
     private void MultiSelect(GameObject Unit)
@@ -77,11 +97,13 @@ public class UnitSelectionManager : MonoBehaviour
         if (UnitsSelected.Contains(Unit) == false)
         {
             UnitsSelected.Add(Unit);
+            UnitSelectedIndicator(Unit, true);
             EnableUnitMovement(Unit, true);
         }
         else
         {
             EnableUnitMovement(Unit, false);
+            UnitSelectedIndicator(Unit, false);
             UnitsSelected.Remove(Unit);
         }
     }
