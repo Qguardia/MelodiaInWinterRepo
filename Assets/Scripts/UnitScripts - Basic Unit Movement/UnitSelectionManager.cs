@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -71,13 +72,28 @@ public class UnitSelectionManager : MonoBehaviour
     {
         DeselectAll();
         UnitsSelected.Add(unit);
-        UnitSelectedIndicator(unit, true);
-        EnableUnitMovement(unit, true);
+        SelectUnit(unit, true);
+    }
+
+    private void SelectUnit(GameObject unit, bool isSelected)
+    {
+        UnitSelectedIndicator(unit, isSelected);
+        EnableUnitMovement(unit, isSelected);
     }
     private void EnableUnitMovement(GameObject unit, bool shouldMove)
     {
         unit.GetComponent<UnitMovement>().enabled = shouldMove; 
     }
+
+    internal void DragSelect(GameObject unit)
+    {
+        if (UnitsSelected.Contains(unit) == false)
+        {
+            UnitsSelected.Add(unit);
+            SelectUnit(unit, true);
+        }
+    }
+
     private void UnitSelectedIndicator(GameObject unit, bool isVisible)
     {
         unit.transform.GetChild(0).gameObject.SetActive(isVisible);
@@ -86,8 +102,7 @@ public class UnitSelectionManager : MonoBehaviour
     {
         foreach (var unit in UnitsSelected)
         {
-            EnableUnitMovement(unit, false);
-            UnitSelectedIndicator(unit, false);
+            SelectUnit(unit, false);
         }
         groundMarker.SetActive(false);
         UnitsSelected.Clear();
@@ -97,13 +112,11 @@ public class UnitSelectionManager : MonoBehaviour
         if (UnitsSelected.Contains(Unit) == false)
         {
             UnitsSelected.Add(Unit);
-            UnitSelectedIndicator(Unit, true);
-            EnableUnitMovement(Unit, true);
+            SelectUnit(Unit, true);
         }
         else
         {
-            EnableUnitMovement(Unit, false);
-            UnitSelectedIndicator(Unit, false);
+            SelectUnit(Unit, false);
             UnitsSelected.Remove(Unit);
         }
     }
