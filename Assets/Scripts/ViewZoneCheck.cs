@@ -20,7 +20,7 @@ public class ViewZoneCheck : MonoBehaviour
 
     void Start()
     {
-        hitLayers = LayerMask.GetMask("Player") | LayerMask.GetMask("Default") | LayerMask.GetMask("Environment");
+        hitLayers = LayerMask.GetMask("Clickable") | LayerMask.GetMask("Ground") | LayerMask.GetMask("Environment");
         target = GameObject.FindGameObjectWithTag("PlayerBody").transform;
         sightRange = parent.GetComponent<NavmeshAgentScript>().sightRange;
         lightChecker = GameObject.Find("lightChecker");

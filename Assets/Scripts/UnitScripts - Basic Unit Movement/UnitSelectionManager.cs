@@ -87,7 +87,7 @@ public class UnitSelectionManager : MonoBehaviour
 
     internal void DragSelect(GameObject unit)
     {
-        if (UnitsSelected.Contains(unit) == false)
+        if (UnitsSelected.Contains(unit) == true)
         {
             UnitsSelected.Add(unit);
             SelectUnit(unit, true);
@@ -98,7 +98,7 @@ public class UnitSelectionManager : MonoBehaviour
     {
         unit.transform.GetChild(0).gameObject.SetActive(isVisible);
     }
-    private void DeselectAll()
+    public void DeselectAll()
     {
         foreach (var unit in UnitsSelected)
         {
