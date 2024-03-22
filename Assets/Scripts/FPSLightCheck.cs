@@ -33,7 +33,7 @@ public class FPSLightCheck : MonoBehaviour
 
         lightRange = 15;
 
-        hitLayers = LayerMask.GetMask("Player") | LayerMask.GetMask("Default") | LayerMask.GetMask("Environment");
+        hitLayers = LayerMask.GetMask("Clickable") | LayerMask.GetMask("Ground") | LayerMask.GetMask("Environment");
 
         VisibilityInitialised();
 
