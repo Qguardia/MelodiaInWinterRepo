@@ -23,46 +23,48 @@ public class UnitSelections : MonoBehaviour
             _instance = this;
         }
     }
-    public void ClickSelect(GameObject unitToAdd)
-    {
-        DeselectAll();
-        unitsSelected.Add(unitToAdd);
-
-    }
-    public void ShiftclickSelect(GameObject unitToAdd)
-    {
-        if (!unitsSelected.Contains(unitToAdd))
+    
+        public void ClickSelect(GameObject unitToAdd)
         {
-            unitsSelected.Add(unitToAdd);
-            //unitToAdd.transform.GetChild(0).gameObject.SetActive(true);
+          DeselectAll();
+          unitsSelected.Add(unitToAdd);
+
+          //unitToAdd.transform.GetChild(0).gameObject.SetActive(true);
         }
-        else
+        public void ShiftclickSelect(GameObject unitToAdd)
         {
-            // unitToAdd.transform.GetChild(0).gameObject.SetActive(false);
-            unitsSelected.Remove(unitToAdd);
+            if (!unitsSelected.Contains(unitToAdd))
+            {
+                unitsSelected.Add(unitToAdd);
+                //unitToAdd.transform.GetChild(0).gameObject.SetActive(true);
+            }
+            else
+            {
+               // unitToAdd.transform.GetChild(0).gameObject.SetActive(false);
+                unitsSelected.Remove(unitToAdd);
+            }
+                 
         }
-
-    }
-    public void DragSelect(GameObject unitToAdd)
-    {
-        if (!unitsSelected.Contains(unitToAdd))
+        public void DragSelect(GameObject unitToAdd)
         {
-            unitsSelected.Add(unitToAdd);
-            //unitToAdd.transform.GetChild(0).gameObject.SetActive(true);
+            if (!unitsSelected.Contains(unitToAdd))
+            {
+                unitsSelected.Add(unitToAdd);
+                //unitToAdd.transform.GetChild(0).gameObject.SetActive(true);
+            }
         }
-    }
-    public void DeselectAll()
-    {
-        unitsSelected.Clear();
-        /*foreach (var unit in unitsSelected)
+        public void DeselectAll()
         {
-            //unit.transform.GetChild(0).gameObject.SetActive(false);
-        }*/
+            unitsSelected.Clear();
+            /*foreach (var unit in unitsSelected)
+            {
+                //unit.transform.GetChild(0).gameObject.SetActive(false);
+            }*/
+           
+        }
+        public void Deselect(GameObject unitToDeselect)
+        {
 
-    }
-    public void Deselect(GameObject unitToDeselect)
-    {
-
-    }
-
+        }
+    
 }

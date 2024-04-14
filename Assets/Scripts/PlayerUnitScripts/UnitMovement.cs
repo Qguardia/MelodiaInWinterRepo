@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
 public class UnitMovement : MonoBehaviour
 {
     Camera myCam;
@@ -20,4 +19,3 @@ public class UnitMovement : MonoBehaviour
         
     }
 }
-*/

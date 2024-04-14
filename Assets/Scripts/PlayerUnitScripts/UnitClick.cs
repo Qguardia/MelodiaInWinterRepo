@@ -19,13 +19,9 @@ public class UnitClick : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
-        {   
-            
-
-            Ray ray = myCam.ScreenPointToRay(Input.mousePosition);
+        {
             RaycastHit hit;
-
-            Debug.Log("shoot me");
+            Ray ray = myCam.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, clickable))
             {
