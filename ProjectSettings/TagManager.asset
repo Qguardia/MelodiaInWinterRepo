@@ -15,8 +15,6 @@ TagManager:
   - CheckPoint
   - Light
   - Environment
-  - PlayerUnit
-  - UnitHitbox
   layers:
   - Default
   - TransparentFX
@@ -26,8 +24,8 @@ TagManager:
   - UI
   - Ground
   - Clickable
-  - Enemy
-  - Environment
+  - 
+  - 
   - 
   - 
   - 

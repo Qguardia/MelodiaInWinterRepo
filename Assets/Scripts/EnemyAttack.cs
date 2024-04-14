@@ -8,7 +8,7 @@ public class EnemyAttack : MonoBehaviour
     public float attackRate;
     public float damageMulitplier = 1.0f;
     private float timer;
-    public GameObject PlayerUnit;
+    public GameObject player;
     public float health;
 
     
@@ -26,7 +26,7 @@ public class EnemyAttack : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "PlayerUnit")
+        if (other.gameObject.tag == "Player")
         {
             if (instaDeathAttacker == true)
             {

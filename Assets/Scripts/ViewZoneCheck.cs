@@ -14,14 +14,16 @@ public class ViewZoneCheck : MonoBehaviour
     public Vector3 direction;
     public LayerMask hitLayers;
 
+    public GameObject lightChecker;
 
     public EnemyGun enemyGun;
 
     void Start()
     {
         hitLayers = LayerMask.GetMask("Clickable") | LayerMask.GetMask("Ground") | LayerMask.GetMask("Environment");
-        target = GameObject.FindGameObjectWithTag("UnitHitbox").transform;
+        target = GameObject.FindGameObjectWithTag("PlayerBody").transform;
         sightRange = parent.GetComponent<NavmeshAgentScript>().sightRange;
+        lightChecker = GameObject.Find("lightChecker");
     }
 
    private void FixedUpdate()
@@ -102,8 +104,7 @@ public class ViewZoneCheck : MonoBehaviour
             }
             else
             {
-                inLOS = true;
-                /*Debug.Log("RAYCAST HIT PLAYERBODY - WOOOOOOOOOOOOOOOOOO!");
+                //Debug.Log("RAYCAST HIT PLAYERBODY - WOOOOOOOOOOOOOOOOOO!");
                 if (lightChecker.gameObject.GetComponent<FPSLightCheck>().isVisible == true)
                 {
                     inLOS = true;
@@ -112,7 +113,7 @@ public class ViewZoneCheck : MonoBehaviour
                 {
                     inLOS = false;
                 }
-                */
+                
             }
         }
         else

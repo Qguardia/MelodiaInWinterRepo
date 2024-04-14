@@ -47,7 +47,7 @@ public class NavmeshAgentScript : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("UnitHitbox").transform;
-        player = GameObject.FindGameObjectWithTag("PlayerUnit");
+        player = GameObject.FindGameObjectWithTag("Clickable");
         PatrolPoint = 0;
         PatrolPointCount = wayPoints.Length;
         patrolCheckRange = 1.2f;
