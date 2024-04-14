@@ -9,9 +9,6 @@ public class UnitMovement : MonoBehaviour
     NavMeshAgent agent;
     public LayerMask ground;
 
-    //Below are InputScripts for different abilties
-    
-
     private void Start()
     {
         cam = Camera.main;
