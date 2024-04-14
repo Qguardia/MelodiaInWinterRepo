@@ -8,7 +8,7 @@ public class EnemyAttack : MonoBehaviour
     public float attackRate;
     public float damageMulitplier = 1.0f;
     private float timer;
-    public GameObject player;
+    public GameObject PlayerUnit;
     public float health;
 
     
