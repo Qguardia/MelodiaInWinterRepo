@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+ using System.Collections.Generic;
 using UnityEngine;
 
 public class UnitSelections : MonoBehaviour
@@ -55,12 +54,11 @@ public class UnitSelections : MonoBehaviour
         }
         public void DeselectAll()
         {
-            unitsSelected.Clear();
-            /*foreach (var unit in unitsSelected)
+            foreach (var unit in unitsSelected)
             {
                 //unit.transform.GetChild(0).gameObject.SetActive(false);
-            }*/
-           
+            }
+            unitsSelected.Clear();
         }
         public void Deselect(GameObject unitToDeselect)
         {
