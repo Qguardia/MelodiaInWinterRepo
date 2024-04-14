@@ -88,7 +88,6 @@ public class AIController : MonoBehaviour
                 {
                     Stop();
                     m_WaitTime -= Time.deltaTime;
-                    Debug.Log("Returning To Patrol");
                 }
             }
         }
@@ -101,8 +100,6 @@ public class AIController : MonoBehaviour
             {
                 Move(speedWalk);
                 LookingPlayer(playerLastPosition);
-                Debug.Log("Player is seen");
-
             }
             else
             {
@@ -120,7 +117,6 @@ public class AIController : MonoBehaviour
                 if (m_WaitTime <= 0)
                 {
                     NextPoint();
-                    Debug.Log("moving To next point");
                     Move(speedWalk);
                     m_WaitTime = startWaitTime;
                 }
