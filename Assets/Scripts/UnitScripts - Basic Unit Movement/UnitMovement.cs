@@ -21,7 +21,6 @@ public class UnitMovement : MonoBehaviour
         {
             RaycastHit hit;
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            Debug.Log("I am moving to destination");
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, ground))
             {
