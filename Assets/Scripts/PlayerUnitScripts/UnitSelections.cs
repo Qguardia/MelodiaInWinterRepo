@@ -27,18 +27,18 @@ public class UnitSelections : MonoBehaviour
         {
           DeselectAll();
           unitsSelected.Add(unitToAdd);
-          //unitToAdd.transform.GetChild(0).gameObject.SetActive(true);
+          unitToAdd.transform.GetChild(0).gameObject.SetActive(true);
         }
         public void ShiftclickSelect(GameObject unitToAdd)
         {
             if (!unitsSelected.Contains(unitToAdd))
             {
                 unitsSelected.Add(unitToAdd);
-                //unitToAdd.transform.GetChild(0).gameObject.SetActive(true);
+                unitToAdd.transform.GetChild(0).gameObject.SetActive(true);
             }
             else
             {
-               // unitToAdd.transform.GetChild(0).gameObject.SetActive(false);
+                unitToAdd.transform.GetChild(0).gameObject.SetActive(false);
                 unitsSelected.Remove(unitToAdd);
             }
                  
@@ -48,14 +48,14 @@ public class UnitSelections : MonoBehaviour
             if (!unitsSelected.Contains(unitToAdd))
             {
                 unitsSelected.Add(unitToAdd);
-                //unitToAdd.transform.GetChild(0).gameObject.SetActive(true);
+            unitToAdd.transform.GetChild(0).gameObject.SetActive(true);
             }
         }
         public void DeselectAll()
         {
             foreach (var unit in unitsSelected)
             {
-                //unit.transform.GetChild(0).gameObject.SetActive(false);
+                unit.transform.GetChild(0).gameObject.SetActive(false);
             }
             unitsSelected.Clear();
         }

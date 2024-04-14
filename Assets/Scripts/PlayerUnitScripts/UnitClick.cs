@@ -36,11 +36,8 @@ public class UnitClick : MonoBehaviour
             }
             else
             {
-                
-                if (!Input.GetKey(KeyCode.LeftShift))
-                {
-                    UnitSelections.Instance.DeselectAll();
-                }
+                //not Hit clickable
+                UnitSelections.Instance.DeselectAll();
             }
         }
     }

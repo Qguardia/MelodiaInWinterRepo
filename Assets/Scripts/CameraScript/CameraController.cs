@@ -31,7 +31,7 @@ public class CameraController : MonoBehaviour
     }
     void HandleMovementInput()
     {
-        if (Input.GetKey(KeyCode.LeftControl))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             movementSpeed = fastSpeed;
         }
