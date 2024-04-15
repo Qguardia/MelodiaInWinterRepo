@@ -9,6 +9,7 @@ public class NavMeshAgentSentry : MonoBehaviour
 
     public Transform target; //This is the player's body's transform
     public GameObject player;
+    public Transform Coin;
     NavMeshAgent agent;
     public GameObject[] wayPoints;
 
@@ -33,6 +34,9 @@ public class NavMeshAgentSentry : MonoBehaviour
     public bool jobIsPatrol;
     public bool jobIsStandGaurd;
 
+    public Quaternion initialRotation;
+    public bool hasResetRotation;
+
     // This enemy uses an integer to flag the AI state:
 
     // 1 = Head to the player and raycast to check LOS again
@@ -45,9 +49,13 @@ public class NavMeshAgentSentry : MonoBehaviour
 
     void Start()
     {
+        hasResetRotation = false;
+        initialRotation = transform.rotation;
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("PlayerBody").transform;
         player = GameObject.FindGameObjectWithTag("Player");
+        Coin = GameObject.FindGameObjectWithTag("Coin").transform;
+        
         PatrolPoint = 0;
         PatrolPointCount = wayPoints.Length;
         patrolCheckRange = 1.2f;
@@ -110,6 +118,7 @@ public class NavMeshAgentSentry : MonoBehaviour
 
         if (AIState == 1)
         {
+            hasResetRotation = false;
             agent.speed = chaseSpeed;
             //agent.SetDestination(target.position);
 
@@ -163,7 +172,11 @@ public class NavMeshAgentSentry : MonoBehaviour
 
         if (AIState == 4) // GUARD WHERE YOU ARE.
         {
-            //DO NOTHING!
+            if (hasResetRotation == false)
+            {
+                StartCoroutine(RotateInital());
+                hasResetRotation = true;
+            }
         }
 
         if (AIState == 5) // RETURN TO GUARD STATION
@@ -186,6 +199,27 @@ public class NavMeshAgentSentry : MonoBehaviour
         if (AIState == 6)
         {
             // Set up to head to a location given by an alarm or something. Needs a 'Last Seen At'
+        }
+
+        if (AIState == 7) //DistractionByCoin
+        {
+            hasResetRotation = false;
+            agent.speed = chaseSpeed;
+            //agent.SetDestination(target.position);
+
+            transform.LookAt(Coin.position);
+
+            AIState = 4;
+
+        }
+    }
+
+    private IEnumerator RotateInital()
+    {
+        yield return new WaitForSeconds(5);
+        if (AIState == 4)
+        {
+            transform.rotation = initialRotation;
         }
     }
 }
