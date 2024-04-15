@@ -44,7 +44,7 @@ public class FPSMovement : MonoBehaviour
     public float headRoom;
     private bool crouchSwitched;
 
-    public bool hasAbility = true;
+    public bool hasAbility = false;
     
     
     // ability activation and delay
