@@ -3759,7 +3759,7 @@ RectTransform:
   m_Children:
   - {fileID: 464180812}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -8641,6 +8641,10 @@ PrefabInstance:
       propertyPath: collectPromptTxt
       value: 
       objectReference: {fileID: 2066390966}
+    - target: {fileID: 7762347806075070638, guid: 1bc0a16415a9cc14d9586771e3b93060, type: 3}
+      propertyPath: m_ability
+      value: 114
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bc0a16415a9cc14d9586771e3b93060, type: 3}
 --- !u!1001 &6495301314703392386
@@ -8898,7 +8902,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7936560106044043319, guid: 195cbd15b11464d4cb42b1540acd9f90, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7936560106044043319, guid: 195cbd15b11464d4cb42b1540acd9f90, type: 3}
       propertyPath: m_LocalPosition.x
