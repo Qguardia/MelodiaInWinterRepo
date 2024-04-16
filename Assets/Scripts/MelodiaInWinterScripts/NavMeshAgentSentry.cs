@@ -208,7 +208,7 @@ public class NavMeshAgentSentry : MonoBehaviour
             //agent.SetDestination(target.position);
 
             transform.LookAt(Coin.position);
-
+            StartCoroutine(RotateInital());
             AIState = 4;
 
         }
