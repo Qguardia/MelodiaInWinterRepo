@@ -9,7 +9,7 @@ public class CoinTossAbility : MonoBehaviour
     GameObject CoinThrowPosition;
     void Start()
     {
-        CoinThrowPosition = transform.GetChild(0).gameObject;
+        CoinThrowPosition = transform.gameObject;
     }
 
     // Update is called once per frame

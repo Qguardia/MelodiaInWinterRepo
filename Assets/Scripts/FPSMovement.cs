@@ -49,15 +49,20 @@ public class FPSMovement : MonoBehaviour
     //Coin ability location 
     public CoinTossAbility CoinThrowposition;
     
-    // ability activation and delay
+    // ability activation and delay - Music
     public bool abilityActive_Music;
     public bool canUseAbility_Music;
 
-    public float abilityActiveSeconds;
-    public float abilityCooldownSeconds;
+    public float MusicabilityActiveSeconds;
+    public float MusicabilityCooldownSeconds;
+
+    // ability activation and delay - Coin
 
     public bool canUseAbility_Coin;
     public bool AbilityActive_Coin;
+
+    public float CoinabilityActiveSeconds;
+    public float CoinabilityCooldownSeconds;
 
     // Start is called before the first frame update
     void Awake()
@@ -255,21 +260,21 @@ public class FPSMovement : MonoBehaviour
     // Ability Coroutines - Timer
     private IEnumerator musicAbilityCoroutine()
     {
-        yield return new WaitForSeconds(abilityActiveSeconds);
+        yield return new WaitForSeconds(MusicabilityActiveSeconds);
         Debug.Log("Ability has ended");
         abilityActive_Music = false;
 
-        yield return new WaitForSeconds(abilityCooldownSeconds);
+        yield return new WaitForSeconds(MusicabilityCooldownSeconds);
         Debug.Log("Ability is recharged");
         canUseAbility_Music = true;
     }
     private IEnumerator CoinAbilityCoroutine()
     {
-        yield return new WaitForSeconds(abilityActiveSeconds);
+        yield return new WaitForSeconds(CoinabilityActiveSeconds);
         Debug.Log("Ability has ended");
         AbilityActive_Coin = false;
 
-        yield return new WaitForSeconds(abilityCooldownSeconds);
+        yield return new WaitForSeconds(CoinabilityCooldownSeconds);
         Debug.Log("Ability is recharged");
         canUseAbility_Coin = true;
     }
