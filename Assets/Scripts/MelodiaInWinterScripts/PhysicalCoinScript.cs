@@ -10,12 +10,13 @@ public class PhysicalCoinScript : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().velocity = transform.forward * CoinSpeed;
     }
 
-    private void OnCollisionEnter(Collision collision)
+   /* private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("CoinHasRemoveditself");
         DestroySelf();
     }
     void DestroySelf()
     {
         Destroy(gameObject);
-    }
+    }*/
 }
