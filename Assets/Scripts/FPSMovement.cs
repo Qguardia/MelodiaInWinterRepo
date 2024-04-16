@@ -44,22 +44,25 @@ public class FPSMovement : MonoBehaviour
     public float headRoom;
     private bool crouchSwitched;
 
-    public bool hasAbility = false;
+   //s public bool hasAbility = false;
     
     
     // ability activation and delay
-    public bool abilityactive;
-    public bool canUseAbility;
+    public bool abilityActive_Music;
+    public bool canUseAbility_Music;
 
     public float abilityActiveSeconds;
     public float abilityCooldownSeconds;
+
+    public bool canUseAbility_Coin;
+    public bool AbilityActiveCoin;
 
     // Start is called before the first frame update
     void Awake()
     {
         m_finalSpeed = m_movementSpeed;
 
-        canUseAbility = true;
+        canUseAbility_Music = false;
     }
 
     // Update is called once per frame
@@ -88,11 +91,15 @@ public class FPSMovement : MonoBehaviour
             isInputting = false;
         }
 
-        if (Input.GetKeyDown(m_ability) && canUseAbility)
+        if (Input.GetKeyDown(m_ability) && canUseAbility_Music)
         {
-            abilityactive = true;
-            canUseAbility = false;
-            StartCoroutine(AbilityCoroutine());
+            abilityActive_Music = true;
+            canUseAbility_Music = false;
+            StartCoroutine(musicAbilityCoroutine());
+        }else if ( Input.GetKeyDown (m_ability) && canUseAbility_Coin)
+        {
+            AbilityActiveCoin = true;
+            canUseAbility_Coin = false; 
         }
 
         MovePlayer(move); // Run the MovePlayer function with the vector3 value move
@@ -100,6 +107,7 @@ public class FPSMovement : MonoBehaviour
         JumpCheck(); // Checks if we can jump
 
         FindSoundOutput();
+        CoinThrow();
 
         if (Input.GetKeyDown(m_crouch))
         {
@@ -198,10 +206,10 @@ public class FPSMovement : MonoBehaviour
         }
 
     }
-
+    //Ability Lists 
     void FindSoundOutput()
     {
-        if (abilityactive)
+        if (abilityActive_Music)
         {
             Debug.Log("MakeNoise");
             soundBox.gameObject.SetActive(true);
@@ -227,15 +235,23 @@ public class FPSMovement : MonoBehaviour
             soundBox.NormalSoundRange();
         }
     }
+    void CoinThrow()
+    {
+        if (AbilityActiveCoin)
+        {
+            
+        }
+    }
 
-    private IEnumerator AbilityCoroutine()
+    // Ability Coroutines - Timer
+    private IEnumerator musicAbilityCoroutine()
     {
         yield return new WaitForSeconds(abilityActiveSeconds);
         Debug.Log("Ability has ended");
-        abilityactive = false;
+        abilityActive_Music = false;
 
         yield return new WaitForSeconds(abilityCooldownSeconds);
         Debug.Log("Ability is recharged");
-        canUseAbility = true;
+        canUseAbility_Music = true;
     }
 }
