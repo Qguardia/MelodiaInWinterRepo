@@ -33,6 +33,16 @@ public class NavmeshAgentScript : MonoBehaviour
     public bool jobIsPatrol;
     public bool jobIsStandGaurd;
 
+    public Quaternion initialRotation;
+    public bool hasResetRotation;
+
+    //Coin boolean
+
+    public bool coinHeard;
+    public Transform Coin;
+
+    public float InvestigateSpeed; 
+
     // This enemy uses an integer to flag the AI state:
 
     // 1 = Head to the player and raycast to check LOS again
@@ -51,6 +61,8 @@ public class NavmeshAgentScript : MonoBehaviour
         PatrolPoint = 0;
         PatrolPointCount = wayPoints.Length;
         patrolCheckRange = 1.2f;
+        coinHeard = false;
+
 
         if (!jobIsPatrol && !jobIsStandGaurd)
         {
@@ -184,5 +196,32 @@ public class NavmeshAgentScript : MonoBehaviour
         {
             // Set up to head to a location given by an alarm or something. Needs a 'Last Seen At'
         }
+
+        if (AIState == 7) //DistractionByCoin
+        {
+            hasResetRotation = false;
+            agent.speed = InvestigateSpeed;
+            //agent.SetDestination(target.position);
+            if (coinHeard == true)
+            {
+                transform.LookAt(GameObject.FindGameObjectWithTag("Coin").transform);
+                StartCoroutine(RotateInital());
+                coinHeard = false;
+            }
+
+            // StartCoroutine(RotateInital());
+        }
     }
+
+    private IEnumerator RotateInital()
+    {
+        yield return new WaitForSeconds(5);
+        /*   if (AIState == 4)
+           {
+               transform.rotation = initialRotation;
+           }*/
+        AIState = 4;
+        transform.rotation = initialRotation;
+    }
+
 }

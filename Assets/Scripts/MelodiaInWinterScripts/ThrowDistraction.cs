@@ -20,7 +20,8 @@ public class ThrowDistraction : MonoBehaviour
         
         if (navmeshComponent != null)
         {
-            navmeshComponent.AIState = 1; //Chase the player
+            navmeshComponent.coinHeard = true;
+            navmeshComponent.AIState = 7; //Chase the player
         }
         if (navmeshComponentSEN != null)
         {

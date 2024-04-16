@@ -231,7 +231,9 @@ public class NavMeshAgentSentry : MonoBehaviour
            {
                transform.rotation = initialRotation;
            }*/
-        AIState = 4;
-        transform.rotation = initialRotation;
+        /*AIState = 4;
+        transform.rotation = initialRotation;*/
+
+        DelayedSwitch();
     }
 }
