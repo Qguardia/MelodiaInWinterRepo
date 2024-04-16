@@ -54,7 +54,7 @@ public class NavMeshAgentSentry : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("PlayerBody").transform;
         player = GameObject.FindGameObjectWithTag("Player");
-        Coin = GameObject.FindGameObjectWithTag("Coin").transform;
+      //  Coin = GameObject.FindGameObjectWithTag("Coin").transform;
         
         PatrolPoint = 0;
         PatrolPointCount = wayPoints.Length;
@@ -207,9 +207,9 @@ public class NavMeshAgentSentry : MonoBehaviour
             agent.speed = chaseSpeed;
             //agent.SetDestination(target.position);
 
-            transform.LookAt(Coin.position);
+            transform.LookAt(GameObject.FindGameObjectWithTag("Coin").transform);
             StartCoroutine(RotateInital());
-            AIState = 4;
+            
 
         }
     }
@@ -217,9 +217,11 @@ public class NavMeshAgentSentry : MonoBehaviour
     private IEnumerator RotateInital()
     {
         yield return new WaitForSeconds(5);
-        if (AIState == 4)
-        {
-            transform.rotation = initialRotation;
-        }
+        /*   if (AIState == 4)
+           {
+               transform.rotation = initialRotation;
+           }*/
+        AIState = 4;
+        transform.rotation = initialRotation;
     }
 }
