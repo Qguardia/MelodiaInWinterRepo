@@ -108,6 +108,7 @@ public class FPSMovement : MonoBehaviour
         else if (Input.GetKeyDown (m_ability) && canUseAbility_Coin)
         {
             AbilityActive_Coin = true;
+            FindCoinThrow();
             canUseAbility_Coin = false;
             StartCoroutine(CoinAbilityCoroutine());
         }
@@ -117,7 +118,7 @@ public class FPSMovement : MonoBehaviour
         JumpCheck(); // Checks if we can jump
 
         FindSoundOutput();
-        FindCoinThrow();
+
 
         if (Input.GetKeyDown(m_crouch))
         {
@@ -250,6 +251,7 @@ public class FPSMovement : MonoBehaviour
         if (AbilityActive_Coin)
         {
             CoinThrowposition.CoinThrow();
+
         }
         if (canUseAbility_Music)
         {
