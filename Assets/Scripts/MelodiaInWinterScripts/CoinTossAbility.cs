@@ -16,6 +16,7 @@ public class CoinTossAbility : MonoBehaviour
 
     public void CoinThrow()
     {
+        Debug.Log("coinIsthrown");
         GameObject Coin = Instantiate(CoinModel, CoinThrowPosition.transform.position, CoinThrowPosition.transform.rotation);
     }
 }

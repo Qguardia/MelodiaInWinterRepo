@@ -44,8 +44,10 @@ public class FPSMovement : MonoBehaviour
     public float headRoom;
     private bool crouchSwitched;
 
-   //s public bool hasAbility = false;
-    
+    //s public bool hasAbility = false;
+
+    //Coin ability location 
+    public CoinTossAbility CoinThrowposition;
     
     // ability activation and delay
     public bool abilityActive_Music;
@@ -55,7 +57,7 @@ public class FPSMovement : MonoBehaviour
     public float abilityCooldownSeconds;
 
     public bool canUseAbility_Coin;
-    public bool AbilityActiveCoin;
+    public bool AbilityActive_Coin;
 
     // Start is called before the first frame update
     void Awake()
@@ -63,6 +65,7 @@ public class FPSMovement : MonoBehaviour
         m_finalSpeed = m_movementSpeed;
 
         canUseAbility_Music = false;
+        canUseAbility_Coin = true;
     }
 
     // Update is called once per frame
@@ -96,10 +99,12 @@ public class FPSMovement : MonoBehaviour
             abilityActive_Music = true;
             canUseAbility_Music = false;
             StartCoroutine(musicAbilityCoroutine());
-        }else if ( Input.GetKeyDown (m_ability) && canUseAbility_Coin)
+        }
+        else if (Input.GetKeyDown (m_ability) && canUseAbility_Coin)
         {
-            AbilityActiveCoin = true;
-            canUseAbility_Coin = false; 
+            AbilityActive_Coin = true;
+            canUseAbility_Coin = false;
+            StartCoroutine(CoinAbilityCoroutine());
         }
 
         MovePlayer(move); // Run the MovePlayer function with the vector3 value move
@@ -107,7 +112,7 @@ public class FPSMovement : MonoBehaviour
         JumpCheck(); // Checks if we can jump
 
         FindSoundOutput();
-        CoinThrow();
+        FindCoinThrow();
 
         if (Input.GetKeyDown(m_crouch))
         {
@@ -235,11 +240,15 @@ public class FPSMovement : MonoBehaviour
             soundBox.NormalSoundRange();
         }
     }
-    void CoinThrow()
+    void FindCoinThrow()
     {
-        if (AbilityActiveCoin)
+        if (AbilityActive_Coin)
         {
-            
+            CoinThrowposition.CoinThrow();
+        }
+        if (canUseAbility_Music)
+        {
+            canUseAbility_Coin = false;
         }
     }
 
@@ -253,5 +262,15 @@ public class FPSMovement : MonoBehaviour
         yield return new WaitForSeconds(abilityCooldownSeconds);
         Debug.Log("Ability is recharged");
         canUseAbility_Music = true;
+    }
+    private IEnumerator CoinAbilityCoroutine()
+    {
+        yield return new WaitForSeconds(abilityActiveSeconds);
+        Debug.Log("Ability has ended");
+        AbilityActive_Coin = false;
+
+        yield return new WaitForSeconds(abilityCooldownSeconds);
+        Debug.Log("Ability is recharged");
+        canUseAbility_Coin = true;
     }
 }
