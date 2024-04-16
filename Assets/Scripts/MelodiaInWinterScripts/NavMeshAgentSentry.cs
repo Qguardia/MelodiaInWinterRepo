@@ -37,6 +37,10 @@ public class NavMeshAgentSentry : MonoBehaviour
     public Quaternion initialRotation;
     public bool hasResetRotation;
 
+    //Coin boolean
+
+    public bool coinHeard;
+
     // This enemy uses an integer to flag the AI state:
 
     // 1 = Head to the player and raycast to check LOS again
@@ -54,8 +58,9 @@ public class NavMeshAgentSentry : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("PlayerBody").transform;
         player = GameObject.FindGameObjectWithTag("Player");
-      //  Coin = GameObject.FindGameObjectWithTag("Coin").transform;
-        
+        //  Coin = GameObject.FindGameObjectWithTag("Coin").transform;
+        coinHeard = false;
+
         PatrolPoint = 0;
         PatrolPointCount = wayPoints.Length;
         patrolCheckRange = 1.2f;
@@ -206,9 +211,14 @@ public class NavMeshAgentSentry : MonoBehaviour
             hasResetRotation = false;
             agent.speed = chaseSpeed;
             //agent.SetDestination(target.position);
-
-            transform.LookAt(GameObject.FindGameObjectWithTag("Coin").transform);
-            StartCoroutine(RotateInital());
+            if (coinHeard == true)
+            {
+                transform.LookAt(GameObject.FindGameObjectWithTag("Coin").transform);
+                StartCoroutine(RotateInital());
+                coinHeard = false;
+            }
+            
+           // StartCoroutine(RotateInital());
             
 
         }

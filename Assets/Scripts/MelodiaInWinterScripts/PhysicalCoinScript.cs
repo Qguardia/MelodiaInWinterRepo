@@ -13,7 +13,8 @@ public class PhysicalCoinScript : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("CoinHasRemoveditself");
-        StartCoroutine(WaitTime());
+        //StartCoroutine(WaitTime());
+        DestroySelf();
     }
     void DestroySelf()
     {
@@ -21,7 +22,7 @@ public class PhysicalCoinScript : MonoBehaviour
     }
     private IEnumerator WaitTime()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(0f);
         DestroySelf();
     }
 }

@@ -25,7 +25,9 @@ public class ThrowDistraction : MonoBehaviour
         if (navmeshComponentSEN != null)
         {
             Debug.Log("Coin heard");
+            navmeshComponentSEN.coinHeard = true;
             navmeshComponentSEN.AIState = 7;
+           // navmeshComponentSEN.coinHeard = true;
         }
     }
 
