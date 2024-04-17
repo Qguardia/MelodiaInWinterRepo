@@ -8,7 +8,7 @@ public class UnlockAbility : MonoBehaviour
     {
         FPSMovement navmeshComponent = col.GetComponent<FPSMovement>();
 
-        if (navmeshComponent = null)
+        if (navmeshComponent != null)
         {
             navmeshComponent.canUseAbility_Coin = false;
         }
