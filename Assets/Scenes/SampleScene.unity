@@ -9343,6 +9343,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7145353604992039823, guid: a567b0eb34f602b44baedf6a66eadeb9, type: 3}
+      propertyPath: Coin
+      value: 
+      objectReference: {fileID: 3474875200012513943, guid: 3ac83e018a9ab044ea95b80656269a51, type: 3}
+    - target: {fileID: 7145353604992039823, guid: a567b0eb34f602b44baedf6a66eadeb9, type: 3}
       propertyPath: wayPoints.Array.data[0]
       value: 
       objectReference: {fileID: 810305963}
@@ -10008,6 +10012,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 301993945}
     m_Modifications:
+    - target: {fileID: 1742831692033397413, guid: 0a518b082e5ea1448bf579744fe80874, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1950990739256928512, guid: 0a518b082e5ea1448bf579744fe80874, type: 3}
       propertyPath: player
       value: 
@@ -10055,6 +10063,10 @@ PrefabInstance:
     - target: {fileID: 5951765876017833618, guid: 0a518b082e5ea1448bf579744fe80874, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5951765876017833620, guid: 0a518b082e5ea1448bf579744fe80874, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5951765876017833623, guid: 0a518b082e5ea1448bf579744fe80874, type: 3}
       propertyPath: m_Name
