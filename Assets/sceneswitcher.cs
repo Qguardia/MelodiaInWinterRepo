@@ -21,4 +21,5 @@ public class sceneswitcher : MonoBehaviour
     {
         Application.Quit();
     }
+
 }
