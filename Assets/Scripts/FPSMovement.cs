@@ -248,15 +248,19 @@ public class FPSMovement : MonoBehaviour
     }
     void FindCoinThrow()
     {
+        if (canUseAbility_Music == true)
+        {
+            canUseAbility_Coin = false;
+        }
         if (AbilityActive_Coin)
         {
             CoinThrowposition.CoinThrow();
 
         }
-        if (canUseAbility_Music)
+      /*  if (canUseAbility_Music == true)
         {
             canUseAbility_Coin = false;
-        }
+        }*/
     }
 
     // Ability Coroutines - Timer
