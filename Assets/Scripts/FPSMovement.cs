@@ -99,18 +99,28 @@ public class FPSMovement : MonoBehaviour
             isInputting = false;
         }
 
-        if (Input.GetKeyDown(m_ability) && canUseAbility_Music)
+        if (Input.GetKeyDown(m_ability))
         {
-            abilityActive_Music = true;
-            canUseAbility_Music = false;
-            StartCoroutine(musicAbilityCoroutine());
-        }
-        else if (Input.GetKeyDown (m_ability) && canUseAbility_Coin)
-        {
-            AbilityActive_Coin = true;
-            FindCoinThrow();
-            canUseAbility_Coin = false;
-            StartCoroutine(CoinAbilityCoroutine());
+            if (canUseAbility_Music && !canUseAbility_Coin)
+            {
+                abilityActive_Music = true;
+                canUseAbility_Music = false;
+                StartCoroutine(musicAbilityCoroutine());
+            }
+            else if (!canUseAbility_Music && canUseAbility_Coin)
+            {
+                AbilityActive_Coin = true;
+                FindCoinThrow();
+                canUseAbility_Coin = false;
+                StartCoroutine(CoinAbilityCoroutine());
+
+            }
+
+            else if(canUseAbility_Coin && canUseAbility_Music)
+            {
+                Debug.LogError("Error:Both are active abilities");
+            }
+            
         }
 
         MovePlayer(move); // Run the MovePlayer function with the vector3 value move
@@ -252,6 +262,7 @@ public class FPSMovement : MonoBehaviour
         {
             canUseAbility_Coin = false;
         }
+
         if (AbilityActive_Coin)
         {
             CoinThrowposition.CoinThrow();
