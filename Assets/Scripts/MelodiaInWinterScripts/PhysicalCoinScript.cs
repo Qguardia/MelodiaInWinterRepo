@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class PhysicalCoinScript : MonoBehaviour
@@ -12,8 +13,10 @@ public class PhysicalCoinScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+       // Inspector.CapsuleCollider.SetActive(false); // trying to make the coin trigger the collider on impact
         Debug.Log("CoinHasRemoveditself");
         //StartCoroutine(WaitTime());
+
         DestroySelf();
     }
     void DestroySelf()
