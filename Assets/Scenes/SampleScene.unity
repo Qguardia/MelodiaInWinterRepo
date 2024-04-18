@@ -801,6 +801,7 @@ GameObject:
   - component: {fileID: 241356471}
   - component: {fileID: 241356470}
   - component: {fileID: 241356469}
+  - component: {fileID: 241356472}
   m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
@@ -832,7 +833,7 @@ BoxCollider:
   m_GameObject: {fileID: 241356467}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -886,6 +887,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241356467}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &241356472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241356467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c788593f1064f345adf4e8c43973905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &301993944
 GameObject:
   m_ObjectHideFlags: 0
@@ -1279,7 +1292,6 @@ GameObject:
   - component: {fileID: 375875271}
   - component: {fileID: 375875274}
   - component: {fileID: 375875273}
-  - component: {fileID: 375875272}
   m_Layer: 0
   m_Name: ObjectiveLute
   m_TagString: Untagged
@@ -1302,22 +1314,6 @@ Transform:
   m_Father: {fileID: 2035281572}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &375875272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 375875270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f14fdf3dc310154b9ab4b1a1836756e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 0}
-  response:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &375875273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1687,7 +1683,7 @@ GameObject:
   - component: {fileID: 481227056}
   - component: {fileID: 481227055}
   - component: {fileID: 481227054}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Wall(1)
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -2875,7 +2871,7 @@ GameObject:
   - component: {fileID: 615561622}
   - component: {fileID: 615561621}
   - component: {fileID: 615561620}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Wall
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -7025,7 +7021,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1963729471}
   - component: {fileID: 1963729470}
-  - component: {fileID: 1963729469}
   m_Layer: 13
   m_Name: Post-process Volume
   m_TagString: Untagged
@@ -7033,18 +7028,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1963729469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1963729468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1963729470
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9294,6 +9277,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 301993945}
     m_Modifications:
+    - target: {fileID: 1599055247831658060, guid: a567b0eb34f602b44baedf6a66eadeb9, type: 3}
+      propertyPath: lightChecker
+      value: 
+      objectReference: {fileID: 7406798226874057186}
     - target: {fileID: 7145353604992039817, guid: a567b0eb34f602b44baedf6a66eadeb9, type: 3}
       propertyPath: m_Name
       value: Enemy-StandingGuardShoot

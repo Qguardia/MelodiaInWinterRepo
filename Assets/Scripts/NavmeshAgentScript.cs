@@ -125,6 +125,7 @@ public class NavmeshAgentScript : MonoBehaviour
             agent.speed = chaseSpeed;
             agent.SetDestination(target.position);
             lastSeenAt = target.transform.position;
+
             if (player.GetComponent<PlayerHealth>().playerIsAlive == false) // If player is dead, AI goes to patrol
             {
                 AIState = 3;
