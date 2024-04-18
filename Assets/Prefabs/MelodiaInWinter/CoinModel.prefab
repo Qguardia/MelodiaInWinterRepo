@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3474875199686564043}
   - component: {fileID: 3474875199686564040}
   - component: {fileID: 3474875199686564042}
+  - component: {fileID: 992517498992894461}
   m_Layer: 0
   m_Name: CoinSoundBox
   m_TagString: Coin
@@ -67,6 +68,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc0c752fa96f23b4682d0928c93cb14f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CoinSoundBox: {fileID: 0}
+  CoinSoundBoxAoE: {fileID: 0}
+--- !u!135 &992517498992894461
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3474875199686564046}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3474875200012513947
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,4 +214,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GroundHit: 0
   CoinSpeed: 20
-  soundbox: {fileID: 0}

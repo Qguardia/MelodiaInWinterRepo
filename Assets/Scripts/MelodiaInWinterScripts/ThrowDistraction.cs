@@ -5,14 +5,15 @@ using UnityEngine;
 public class ThrowDistraction : MonoBehaviour
 {
     public BoxCollider CoinSoundBox;
-    private Vector3 triggerScaleBase;
-  
+    public SphereCollider CoinSoundBoxAoE;
 
     void Start()
     {
         CoinSoundBox = GetComponent<BoxCollider>();
-        triggerScaleBase = CoinSoundBox.size;
         CoinSoundBox.gameObject.GetComponent<BoxCollider>().enabled = false;
+
+        CoinSoundBoxAoE = GetComponent<SphereCollider>();
+        CoinSoundBoxAoE.gameObject.GetComponent<SphereCollider>().enabled = false;
     }
 
     void OnTriggerEnter(Collider col)
@@ -25,6 +26,8 @@ public class ThrowDistraction : MonoBehaviour
         {
             Debug.Log("NoiseActive");
             CoinSoundBox.gameObject.GetComponent<BoxCollider>().enabled = true;
+            CoinSoundBoxAoE.gameObject.GetComponent<SphereCollider>().enabled = true;
+
             if (navmeshComponent != null)
             {
                 navmeshComponent.coinHeard = true;
@@ -39,37 +42,4 @@ public class ThrowDistraction : MonoBehaviour
             }
         }
     }
-    // Update is called once per frame
-    /*
-    void OnTriggerEnter(Collider col)
-    {
-        NavmeshAgentScript navmeshComponent = col.GetComponent<NavmeshAgentScript>();
-        NavMeshAgentSentry navmeshComponentSEN = col.GetComponent<NavMeshAgentSentry>();
-        PhysicalCoinScript Impact = col.gameObject.GetComponent<PhysicalCoinScript>();
-
-        
-
-        
-            if (Impact.GroundHit == true) 
-            {
-                Debug.Log("NoiseActive");
-                CoinSoundBox.gameObject.GetComponent<BoxCollider>().enabled = true;
-                if (navmeshComponent != null)
-                {
-                    navmeshComponent.coinHeard = true;
-                    navmeshComponent.AIState = 7; //Chase the player
-                }
-                if (navmeshComponentSEN != null)
-                {
-                    Debug.Log("Coin heard");
-                    navmeshComponentSEN.coinHeard = true;
-                    navmeshComponentSEN.AIState = 7;
-                    // navmeshComponentSEN.coinHeard = true;
-                }
-            }
-            //CoinSoundBox.gameObject.GetComponent<BoxCollider>().enabled = false;
-        
-    }*/
 }
-
-//}

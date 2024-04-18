@@ -42,8 +42,8 @@ public class PhysicalCoinScript : MonoBehaviour
     }
     private IEnumerator WaitTime()
     {
-        
-        yield return new WaitForSeconds(0.1f);
+
+        yield return new WaitForSeconds(0.125f);
         GroundHit = false;
 
         DestroySelf();
