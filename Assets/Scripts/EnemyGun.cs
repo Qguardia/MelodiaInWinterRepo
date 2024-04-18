@@ -19,7 +19,7 @@ public class EnemyGun : MonoBehaviour
    {
       if (shootingState == false) 
       {
-         Debug.Log("Ishoot");
+        // Debug.Log("Ishoot");
          StartCoroutine(FireDelay());
       }
    }

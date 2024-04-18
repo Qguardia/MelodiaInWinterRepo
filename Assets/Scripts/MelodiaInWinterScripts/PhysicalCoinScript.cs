@@ -5,19 +5,36 @@ using UnityEngine;
 
 public class PhysicalCoinScript : MonoBehaviour
 {
+    public bool GroundHit;
     public float CoinSpeed;
+  //  public BoxCollider soundbox;
+    private Vector3 triggerScaleBase;
+
+    private BoxCollider cointrigger;
+
+
     void Start()
     {
         gameObject.GetComponent<Rigidbody>().velocity = transform.forward * CoinSpeed;
+        //     soundbox = gameObject.GetComponent<BoxCollider>();
+        //   soundbox.gameObject.GetComponent<BoxCollider>().enabled = false;
+        /*  
+          soundbox = GetComponent<BoxCollider>();
+          triggerScaleBase = soundbox.size;
+          soundbox.gameObject.GetComponent<BoxCollider>().enabled = false;*/
+        cointrigger = GetComponentInChildren<BoxCollider>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision Default)
     {
-       // Inspector.CapsuleCollider.SetActive(false); // trying to make the coin trigger the collider on impact
-        Debug.Log("CoinHasRemoveditself");
-        //StartCoroutine(WaitTime());
+        // Inspector.CapsuleCollider.SetActive(false); // trying to make the coin trigger the collider on impact
+        GroundHit = true;
+        cointrigger.enabled = true;
+        Debug.Log("Coin has Hit Ground");
+        StartCoroutine(WaitTime());
 
-        DestroySelf();
+       // StartCoroutine(WaitTime());
+        // soundbox.gameObject.GetComponent<BoxCollider>().enabled = false;
     }
     void DestroySelf()
     {
@@ -25,7 +42,15 @@ public class PhysicalCoinScript : MonoBehaviour
     }
     private IEnumerator WaitTime()
     {
-        yield return new WaitForSeconds(0f);
+        
+        yield return new WaitForSeconds(0.1f);
+        GroundHit = false;
+
         DestroySelf();
     }
+
+   /* public void CoinSoundRange()
+    {
+        soundbox.size = triggerScaleBase;
+    }*/
 }

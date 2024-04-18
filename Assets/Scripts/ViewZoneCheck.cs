@@ -35,6 +35,7 @@ public class ViewZoneCheck : MonoBehaviour
             if (inLOS == true)
             {
                 //enemyGun.TryToFireGun();
+                Debug.Log("Cars");
                 parent.gameObject.GetComponent<NavmeshAgentScript>().AIState = 1; // HEAD TOWARDS PLAYER
                 enemyGun.TryToFireGun();
             }
@@ -56,6 +57,7 @@ public class ViewZoneCheck : MonoBehaviour
 
             if (inLOS == true)
             {
+                Debug.Log("Hi");
                 parent.gameObject.GetComponent<NavmeshAgentScript>().AIState = 1; // HEAD TOWARDS PLAYER
                 
                 //StartCoroutine(LOSDelay()); // Fire bullet before delay
@@ -89,13 +91,13 @@ public class ViewZoneCheck : MonoBehaviour
         guardPosition = parent.transform.position;
         //guardPosition.y = myY;// + guardHeightOffset;
         guardPosition.y = parent.transform.position.y + guardHeightOffset;
-        Debug.Log(guardPosition + " and " + parent.transform.position.y);
+        //Debug.Log(guardPosition + " and " + parent.transform.position.y);
 
         direction = (target.transform.position - guardPosition).normalized; //direction FROM guard towards player    
         Ray g_ray = new Ray(guardPosition, direction);
         Debug.DrawRay(g_ray.origin, g_ray.direction * sightRange);
 
-        if (Physics.Raycast(guardPosition, direction * sightRange, out hitThing, sightRange, hitLayers))
+        if (Physics.Raycast(guardPosition, direction  , out hitThing, sightRange, hitLayers))
         {
             if (hitThing.collider.tag != "PlayerBody")
             {
@@ -107,6 +109,7 @@ public class ViewZoneCheck : MonoBehaviour
                 //Debug.Log("RAYCAST HIT PLAYERBODY - WOOOOOOOOOOOOOOOOOO!");
                 if (lightChecker.gameObject.GetComponent<FPSLightCheck>().isVisible == true)
                 {
+                    Debug.Log("Cans see");
                     inLOS = true;
                 }
                 else

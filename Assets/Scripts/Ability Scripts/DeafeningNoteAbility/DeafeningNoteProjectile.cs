@@ -14,17 +14,18 @@ public class DeafeningNoteProjectile : MonoBehaviour
     {
         NavmeshAgentScript navmeshComponent = col.GetComponent<NavmeshAgentScript>();
         NavMeshAgentSentry navmeshComponentSEN = col.GetComponent<NavMeshAgentSentry>();
+        DestroySelf();
 
         if (navmeshComponent != null)
         {
             DestroySelf();
-            navmeshComponent.coinHeard = true;
+            navmeshComponentSEN.isStunned = true;
             navmeshComponent.AIState = 8; //Chase the player
         }
         if (navmeshComponentSEN != null)
         {
             DestroySelf();
-            navmeshComponentSEN.coinHeard = true;
+            navmeshComponentSEN.isStunned = true;
             navmeshComponentSEN.AIState = 8;
         }
     }

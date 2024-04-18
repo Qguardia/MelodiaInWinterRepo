@@ -78,7 +78,6 @@ GameObject:
   - component: {fileID: 3474875200012513943}
   - component: {fileID: 3474875200012513940}
   - component: {fileID: 3474875200012513941}
-  - component: {fileID: 3474875200012513937}
   - component: {fileID: 3474875200012513946}
   - component: {fileID: 3474875200012513942}
   - component: {fileID: 3474875200012513936}
@@ -155,19 +154,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3474875200012513937
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3474875200012513947}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!136 &3474875200012513946
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -210,4 +196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf608e546a2ad74d9eac3c12cb95b05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GroundHit: 0
   CoinSpeed: 20
+  soundbox: {fileID: 0}

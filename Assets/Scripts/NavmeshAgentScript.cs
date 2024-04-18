@@ -221,7 +221,7 @@ public class NavmeshAgentScript : MonoBehaviour
            {
                transform.rotation = initialRotation;
            }*/
-        AIState = 4;
+        DelayedSwitch();
         transform.rotation = initialRotation;
     }
 

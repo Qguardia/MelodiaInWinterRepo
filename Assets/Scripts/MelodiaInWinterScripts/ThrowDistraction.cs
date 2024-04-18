@@ -4,32 +4,72 @@ using UnityEngine;
 
 public class ThrowDistraction : MonoBehaviour
 {
-    private BoxCollider CoinSoundBox;
+    public BoxCollider CoinSoundBox;
     private Vector3 triggerScaleBase;
+  
+
     void Start()
     {
         CoinSoundBox = GetComponent<BoxCollider>();
         triggerScaleBase = CoinSoundBox.size;
+        CoinSoundBox.gameObject.GetComponent<BoxCollider>().enabled = false;
     }
 
-    // Update is called once per frame
     void OnTriggerEnter(Collider col)
     {
         NavmeshAgentScript navmeshComponent = col.GetComponent<NavmeshAgentScript>();
         NavMeshAgentSentry navmeshComponentSEN = col.GetComponent<NavMeshAgentSentry>();
-        
-        if (navmeshComponent != null)
+        PhysicalCoinScript Impact = gameObject.transform.parent.GetComponent<PhysicalCoinScript>();
+
+        if (Impact.GroundHit == true)
         {
-            navmeshComponent.coinHeard = true;
-            navmeshComponent.AIState = 7; //Chase the player
-        }
-        if (navmeshComponentSEN != null)
-        {
-            Debug.Log("Coin heard");
-            navmeshComponentSEN.coinHeard = true;
-            navmeshComponentSEN.AIState = 7;
-           // navmeshComponentSEN.coinHeard = true;
+            Debug.Log("NoiseActive");
+            CoinSoundBox.gameObject.GetComponent<BoxCollider>().enabled = true;
+            if (navmeshComponent != null)
+            {
+                navmeshComponent.coinHeard = true;
+                navmeshComponent.AIState = 7; //Chase the player
+            }
+            if (navmeshComponentSEN != null)
+            {
+                Debug.Log("Coin heard");
+                navmeshComponentSEN.coinHeard = true;
+                navmeshComponentSEN.AIState = 7;
+                // navmeshComponentSEN.coinHeard = true;
+            }
         }
     }
+    // Update is called once per frame
+    /*
+    void OnTriggerEnter(Collider col)
+    {
+        NavmeshAgentScript navmeshComponent = col.GetComponent<NavmeshAgentScript>();
+        NavMeshAgentSentry navmeshComponentSEN = col.GetComponent<NavMeshAgentSentry>();
+        PhysicalCoinScript Impact = col.gameObject.GetComponent<PhysicalCoinScript>();
 
+        
+
+        
+            if (Impact.GroundHit == true) 
+            {
+                Debug.Log("NoiseActive");
+                CoinSoundBox.gameObject.GetComponent<BoxCollider>().enabled = true;
+                if (navmeshComponent != null)
+                {
+                    navmeshComponent.coinHeard = true;
+                    navmeshComponent.AIState = 7; //Chase the player
+                }
+                if (navmeshComponentSEN != null)
+                {
+                    Debug.Log("Coin heard");
+                    navmeshComponentSEN.coinHeard = true;
+                    navmeshComponentSEN.AIState = 7;
+                    // navmeshComponentSEN.coinHeard = true;
+                }
+            }
+            //CoinSoundBox.gameObject.GetComponent<BoxCollider>().enabled = false;
+        
+    }*/
 }
+
+//}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class NavMeshAgentSentry : MonoBehaviour
 {
@@ -225,22 +226,22 @@ public class NavMeshAgentSentry : MonoBehaviour
 
         }
 
-      /*  if (AIState == 8) //DETROIT: BECOME DEAF
+        if (AIState == 8) //DETROIT: BECOME DEAF
         {
-            if
-        }*/
+            if (isStunned == true)
+            {
+               // StartCoroutine(Deafened());
+            }
+        }
     }
 
     private IEnumerator RotateInital()
     {
         yield return new WaitForSeconds(5);
-        /*   if (AIState == 4)
-           {
-               transform.rotation = initialRotation;
-           }*/
-        /*AIState = 4;
-        transform.rotation = initialRotation;*/
-
         DelayedSwitch();
+    }
+    private void Deafened()
+    {
+        
     }
 }
