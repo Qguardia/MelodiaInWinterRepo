@@ -41,6 +41,8 @@ public class NavMeshAgentSentry : MonoBehaviour
 
     public bool coinHeard;
 
+    public bool isStunned;
+
     // This enemy uses an integer to flag the AI state:
 
     // 1 = Head to the player and raycast to check LOS again
@@ -222,6 +224,11 @@ public class NavMeshAgentSentry : MonoBehaviour
             
 
         }
+
+      /*  if (AIState == 8) //DETROIT: BECOME DEAF
+        {
+            if
+        }*/
     }
 
     private IEnumerator RotateInital()

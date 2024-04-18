@@ -11,6 +11,7 @@ public class UnlockAbility : MonoBehaviour
         if (navmeshComponent != null)
         {
             navmeshComponent.canUseAbility_Coin = false;
+            navmeshComponent.canUseAbility_Music = true;
         }
     }
 }
