@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.UIElements;
 using UnityEngine;
 
 public class PhysicalCoinScript : MonoBehaviour
@@ -16,12 +15,6 @@ public class PhysicalCoinScript : MonoBehaviour
     void Start()
     {
         gameObject.GetComponent<Rigidbody>().velocity = transform.forward * CoinSpeed;
-        //     soundbox = gameObject.GetComponent<BoxCollider>();
-        //   soundbox.gameObject.GetComponent<BoxCollider>().enabled = false;
-        /*  
-          soundbox = GetComponent<BoxCollider>();
-          triggerScaleBase = soundbox.size;
-          soundbox.gameObject.GetComponent<BoxCollider>().enabled = false;*/
         cointrigger = GetComponentInChildren<BoxCollider>();
     }
 

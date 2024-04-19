@@ -19,14 +19,15 @@ public class DeafeningNoteProjectile : MonoBehaviour
         if (navmeshComponent != null)
         {
             DestroySelf();
-            navmeshComponentSEN.isStunned = true;
+           // navmeshComponentSEN.isStunned = true;
             navmeshComponent.AIState = 8; //Chase the player
         }
         if (navmeshComponentSEN != null)
         {
-            DestroySelf();
-            navmeshComponentSEN.isStunned = true;
+            
+            //navmeshComponentSEN.isStunned = true;
             navmeshComponentSEN.AIState = 8;
+            DestroySelf();
         }
     }
     void DestroySelf()

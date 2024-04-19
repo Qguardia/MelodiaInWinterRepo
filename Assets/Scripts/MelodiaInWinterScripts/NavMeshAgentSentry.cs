@@ -228,10 +228,15 @@ public class NavMeshAgentSentry : MonoBehaviour
 
         if (AIState == 8) //DETROIT: BECOME DEAF
         {
-            if (isStunned == true)
+            Debug.Log("Hit Registered");
+            while (isStunned == true)
             {
-               // StartCoroutine(Deafened());
+                DeafenedState();
+            } if (isStunned == false)
+            {
+                DelayedSwitch();
             }
+
         }
     }
 
@@ -240,8 +245,11 @@ public class NavMeshAgentSentry : MonoBehaviour
         yield return new WaitForSeconds(5);
         DelayedSwitch();
     }
-    private void Deafened()
+    private IEnumerator DeafenedState()
     {
-        
+        AIState = 4;
+        yield return new WaitForSeconds(8);
+        isStunned = false;
     }
+  
 }
