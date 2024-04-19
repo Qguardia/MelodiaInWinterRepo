@@ -154,7 +154,7 @@ public class NavmeshAgentScript : MonoBehaviour
             currentDestination = wayPoints[PatrolPoint].transform;
             dist = Vector3.Distance(currentDestination.position, transform.position);
             //Debug.Log("No of points: " + PatrolPointCount + " Current: " + PatrolPoint);
-            Debug.Log("HI"); 
+           // Debug.Log("HI"); 
             if (dist > patrolCheckRange)
             {
                 agent.SetDestination(currentDestination.position);
