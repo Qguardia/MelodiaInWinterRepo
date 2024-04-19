@@ -44,6 +44,7 @@ public class FPSMovement : MonoBehaviour
     public float headRoom;
     private bool crouchSwitched;
 
+    public bool sprinting;
     //s public bool hasAbility = false;
 
     //Coin ability location 
@@ -194,9 +195,11 @@ public class FPSMovement : MonoBehaviour
         if (Input.GetKeyDown(m_sprint)) // if key is down, sprint
         {
             m_finalSpeed = m_movementSpeed * m_runSpeed;
+            sprinting = true;
         } 
         else if (Input.GetKeyUp(m_sprint)) // if key is uo, don't sprint
         {
+            sprinting = false;
             m_finalSpeed = m_movementSpeed;
         }
     }
@@ -249,6 +252,13 @@ public class FPSMovement : MonoBehaviour
             soundBox.gameObject.SetActive(true);
             soundBox.CrouchSoundRange();
         }
+
+        if (sprinting == true)
+        {
+            soundBox.gameObject.SetActive(true);
+            soundBox.RunSoundRange();
+        }
+
 
         else 
         {

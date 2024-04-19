@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class TutorialMissionPopup : MonoBehaviour
 {
     public Canvas DialogueBox;
+    public bool triggerentered;
 
     private void OnTriggerEnter(Collider other)
     {

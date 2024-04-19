@@ -36,6 +36,12 @@ public class SoundBox : MonoBehaviour
     {
         soundBox.size = new Vector3 (0.5f * triggerScaleBase.x, 0.5f * triggerScaleBase.y, 0.5f * triggerScaleBase.z);
     }
+
+    public void RunSoundRange()
+    {
+        soundBox.size = new Vector3(5f * triggerScaleBase.x, 5f * triggerScaleBase.y, 5f * triggerScaleBase.z);
+    }
+
     public void AbilitySoundRange()
     {
         soundBox.size = new Vector3 (10f * triggerScaleBase.x, 10f * triggerScaleBase.y, 10f * triggerScaleBase.z);
