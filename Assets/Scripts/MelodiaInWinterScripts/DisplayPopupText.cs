@@ -21,12 +21,18 @@ public class DisplayPopupText : MonoBehaviour
 
     private void OnTriggerEnter (Collider other)
     {
-        dialoguebox.text = textToDisplay;
-        dialoguebox.gameObject.SetActive(true);
+        if(other.gameObject.tag == "Player")
+        {
+            dialoguebox.text = textToDisplay;
+            dialoguebox.gameObject.SetActive(true);
+        }
     }
 
     private void OnTriggerExit (Collider other)
     {
-        dialoguebox.gameObject.SetActive(false);
+        if (other.gameObject.tag == "Player")
+        {
+            dialoguebox.gameObject.SetActive(false);
+        }
     }
 }
