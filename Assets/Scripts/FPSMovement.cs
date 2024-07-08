@@ -65,6 +65,11 @@ public class FPSMovement : MonoBehaviour
     public float CoinabilityActiveSeconds;
     public float CoinabilityCooldownSeconds;
 
+    //AbilityToggle Instrument 
+
+    public KeyCode MelodyAbility;
+
+
     // Start is called before the first frame update
     void Awake()
     {
