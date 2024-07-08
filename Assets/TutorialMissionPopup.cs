@@ -21,6 +21,7 @@ public class TutorialMissionPopup : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             DialogueBox.enabled = false;
+            
         }
     }
 }
