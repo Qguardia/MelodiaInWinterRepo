@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//'Gun' Script
 public class Violin : MonoBehaviour
 {
     public enum ViolinMode
@@ -30,12 +30,15 @@ public class Violin : MonoBehaviour
 
     public void Projectile()
     {
-        GameObject Deafen_projectile = Instantiate(DeafeningProjectile, ProjectileSpawn.transform.position, ProjectileSpawn.transform.rotation);
+        GameObject DeafeningNoteProjectile = Instantiate(DeafeningProjectile, ProjectileSpawn.transform.position, ProjectileSpawn.transform.rotation);
     }
 
     public void Distraction()
     {
-        //...
+        PlayerInput.abilityActive_Music = true;
+        PlayerInput.soundBox.gameObject.SetActive(true);
+        Debug.Log("AAAAAAAA");
+        PlayerInput.soundBox.AbilitySoundRange();
     }
 
 }

@@ -226,7 +226,7 @@ public class NavMeshAgentSentry : MonoBehaviour
 
         }
 
-        if (AIState == 8) //DETROIT: BECOME DEAF
+        while (AIState == 8) //DETROIT: BECOME DEAF
         {
             Debug.Log("Hit Registered");
             while (isStunned == true)
@@ -235,6 +235,7 @@ public class NavMeshAgentSentry : MonoBehaviour
             } if (isStunned == false)
             {
                 DelayedSwitch();
+                AIState = 4;
             }
 
         }
@@ -247,7 +248,7 @@ public class NavMeshAgentSentry : MonoBehaviour
     }
     private IEnumerator DeafenedState()
     {
-        AIState = 4;
+        agent.speed = patrolSpeed - 10;
         yield return new WaitForSeconds(8);
         isStunned = false;
     }
