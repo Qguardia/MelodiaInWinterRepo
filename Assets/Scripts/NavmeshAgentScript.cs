@@ -245,7 +245,7 @@ public class NavmeshAgentScript : MonoBehaviour
     }
     private IEnumerator DeafenedState()
     {
-        agent.speed = patrolSpeed - 10;
+        agent.speed = patrolSpeed - patrolSpeed;
         yield return new WaitForSeconds(8);
         isStunned = false;
     }

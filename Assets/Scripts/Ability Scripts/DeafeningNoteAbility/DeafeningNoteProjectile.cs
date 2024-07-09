@@ -18,19 +18,20 @@ public class DeafeningNoteProjectile : MonoBehaviour
 
         if (navmeshComponent != null)
         {
+            navmeshComponent.isStunned = true;
             navmeshComponent.AIState = 8;
             Debug.Log("Is Hit");
-            navmeshComponent.isStunned = true;
 
-            DestroySelf();
+            WaitTime();
+
            // navmeshComponentSEN.isStunned = true;
         }
         if (navmeshComponentSEN != null)
         {
             //navmeshComponentSEN.isStunned = true;
-            navmeshComponentSEN.AIState = 8;
             navmeshComponent.isStunned = true;
-            DestroySelf();
+            navmeshComponentSEN.AIState = 8;
+            WaitTime();
         }
     }
     void DestroySelf()
