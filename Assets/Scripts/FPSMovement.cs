@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
+using static Violin;
 
 // THIS PLAYER MOVE CLASS WILL ALLOW THE GAMEOBJECT TO MOVE BASED ON CHARACTERCONTROLLER
 
@@ -77,7 +80,7 @@ public class FPSMovement : MonoBehaviour
     {
         m_finalSpeed = m_movementSpeed;
 
-        canUseAbility_Music = false;
+        canUseAbility_Music = true;
         canUseAbility_Coin = true;
         MelodyAbilityselected = 0f; 
     }
@@ -100,7 +103,7 @@ public class FPSMovement : MonoBehaviour
         if (Input.GetKey(m_forward) || Input.GetKey(m_back) || Input.GetKey(m_left) || Input.GetKey(m_right))
         {
             isInputting = true;
-            move = transform.right * x + transform.forward * z; // calculate the move vector (direction)          
+            move = transform.right * x + transform.forward * z; // calculate the move vector (direction)          melodyAbility
         }
 
         else 
@@ -132,15 +135,40 @@ public class FPSMovement : MonoBehaviour
             }*/
             
         }
-        //MelodyAbility active 
+        //Activate Melody Ability
         if (Input.GetKeyDown(m_MelodyAbility))
         {
+            Violin AbilityChange;
+            AbilityChange = GetComponent<Violin>();
+
             if (canUseAbility_Music)
             {
-                Debug.Log("Music Distraction played");
+                Debug.Log("Music ability played");
                 abilityActive_Music = true;
                 canUseAbility_Music = false;
-                StartCoroutine(musicAbilityCoroutine());
+
+                switch(AbilityChange.mode)
+                {
+                    case ViolinMode.Projectile:
+                        Debug.Log("Target Stunned");
+
+                        AbilityChange.Projectile();
+
+                        StartCoroutine(MusicAbilityCooldown());
+                        break;
+
+                    case ViolinMode.Distraction:
+                        Debug.Log("Distraction Played");
+
+                        AbilityChange.Distraction();
+
+                        StartCoroutine(MusicAbilityCooldown());
+                        break;
+                }
+            }
+            else
+            {
+                Debug.Log("Ability is on cooldown");
             }
         }
         //Swapping Melody Ability 
@@ -293,10 +321,10 @@ public class FPSMovement : MonoBehaviour
     }
     void FindCoinThrow()
     {
-        if (canUseAbility_Music == true)
+       /* if (canUseAbility_Music == true)
         {
             canUseAbility_Coin = false;
-        }
+        }*/
 
         if (AbilityActive_Coin)
         {
@@ -309,14 +337,30 @@ public class FPSMovement : MonoBehaviour
     }
     void MelodySwap()
     {
-
+        Violin AbilityChange;
+        AbilityChange = GetComponent<Violin>();
+        
+        //Proof of changing abilities 
+        if (Input.GetKeyDown(MelodyAbilitySwap))
+        {
+            if (AbilityChange.mode == Violin.ViolinMode.Projectile)
+            {
+                AbilityChange.mode = Violin.ViolinMode.Distraction;
+            }
+            else if (AbilityChange.mode == Violin.ViolinMode.Distraction)
+            {
+                AbilityChange.mode = Violin.ViolinMode.Projectile;
+            }
+        }
     }
 
 
 
     // Ability Coroutines - Timer
-    private IEnumerator musicAbilityCoroutine()
+    private IEnumerator ViolinProjectileCoroutine()
     {
+        //...............
+        
         yield return new WaitForSeconds(MusicabilityActiveSeconds);
         Debug.Log("Ability has ended");
         abilityActive_Music = false;
@@ -326,7 +370,7 @@ public class FPSMovement : MonoBehaviour
         canUseAbility_Music = true;
     }
 
-    private IEnumerator musicAbilityCoroutineDeafen()
+    private IEnumerator MusicAbilityCooldown()
     {
         yield return new WaitForSeconds(MusicabilityActiveSeconds);
         Debug.Log("Ability has ended");
