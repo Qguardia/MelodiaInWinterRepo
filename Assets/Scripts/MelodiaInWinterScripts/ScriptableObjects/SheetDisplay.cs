@@ -1,10 +1,11 @@
-using System.Collections;
+/*
+ * using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SheetDisplay : MonoBehaviour
 {
-    public BaseSheetMusic sheet;
+    public SheetMusic;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,3 +18,5 @@ public class SheetDisplay : MonoBehaviour
         
     }
 }
+*/
+// SCRAPPED IDEA KEPT FOR POSTERITY 09/07/2024 DD/MM/YYYY
