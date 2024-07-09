@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.ProBuilder.MeshOperations;
 
 public class NavmeshAgentScript : MonoBehaviour
 {
@@ -123,6 +124,21 @@ public class NavmeshAgentScript : MonoBehaviour
     {
         guardPosition = transform.position;
 
+        if (AIState == 8)
+        {
+            Debug.Log("Hit Registered");
+            while (isStunned == true)
+            {
+                DeafenedState();
+                Debug.Log("Target deafened");
+            }
+            if (isStunned == false)
+            {
+                DelayedSwitch();
+                ResetJobState();
+            }
+        }
+
         if (AIState == 1)
         {
             agent.speed = chaseSpeed;
@@ -214,20 +230,6 @@ public class NavmeshAgentScript : MonoBehaviour
             }
 
             // StartCoroutine(RotateInital());
-            if (AIState == 8)
-            {
-                Debug.Log("Hit Registered");
-                while (isStunned == true)
-                {
-                    DeafenedState();
-                    Debug.Log("Target deafened");
-                }
-                if (isStunned == false)
-                {
-                    DelayedSwitch();
-                    ResetJobState();
-                }
-            }
         }
     }
 
