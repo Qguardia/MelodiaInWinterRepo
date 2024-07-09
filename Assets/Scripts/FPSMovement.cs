@@ -31,7 +31,14 @@ public class FPSMovement : MonoBehaviour
     public KeyCode m_sprint;
     public KeyCode m_jump;
     public KeyCode m_crouch;
+    // Coin Ability
     public KeyCode m_ability;
+
+    //AbilityToggle Instrument 
+
+    public KeyCode m_MelodyAbility;
+    public KeyCode MelodyAbilitySwap;
+    public float MelodyAbilityselected;
 
     public SoundBox soundBox;
     // crouching vars
@@ -65,11 +72,6 @@ public class FPSMovement : MonoBehaviour
     public float CoinabilityActiveSeconds;
     public float CoinabilityCooldownSeconds;
 
-    //AbilityToggle Instrument 
-
-    public KeyCode MelodyAbility;
-
-
     // Start is called before the first frame update
     void Awake()
     {
@@ -77,6 +79,7 @@ public class FPSMovement : MonoBehaviour
 
         canUseAbility_Music = false;
         canUseAbility_Coin = true;
+        MelodyAbilityselected = 0f; 
     }
 
     // Update is called once per frame
@@ -107,13 +110,14 @@ public class FPSMovement : MonoBehaviour
 
         if (Input.GetKeyDown(m_ability))
         {
-            if (canUseAbility_Music && !canUseAbility_Coin)
+          /*  if (canUseAbility_Music && !canUseAbility_Coin)
             {
                 abilityActive_Music = true;
                 canUseAbility_Music = false;
                 StartCoroutine(musicAbilityCoroutine());
             }
-            else if (!canUseAbility_Music && canUseAbility_Coin)
+          */
+             if ( /*!canUseAbility_Music && */ canUseAbility_Coin)
             {
                 AbilityActive_Coin = true;
                 FindCoinThrow();
@@ -122,11 +126,27 @@ public class FPSMovement : MonoBehaviour
 
             }
 
-            else if(canUseAbility_Coin && canUseAbility_Music)
+           /* else if(canUseAbility_Coin && canUseAbility_Music)
             {
                 Debug.LogError("Error:Both are active abilities");
-            }
+            }*/
             
+        }
+        //MelodyAbility active 
+        if (Input.GetKeyDown(m_MelodyAbility))
+        {
+            if (canUseAbility_Music)
+            {
+                Debug.Log("Music Distraction played");
+                abilityActive_Music = true;
+                canUseAbility_Music = false;
+                StartCoroutine(musicAbilityCoroutine());
+            }
+        }
+        //Swapping Melody Ability 
+        if (Input.GetKeyDown(MelodyAbilitySwap))
+        {
+            MelodySwap();
         }
 
         MovePlayer(move); // Run the MovePlayer function with the vector3 value move
@@ -281,13 +301,18 @@ public class FPSMovement : MonoBehaviour
         if (AbilityActive_Coin)
         {
             CoinThrowposition.CoinThrow();
-
         }
       /*  if (canUseAbility_Music == true)
         {
             canUseAbility_Coin = false;
         }*/
     }
+    void MelodySwap()
+    {
+
+    }
+
+
 
     // Ability Coroutines - Timer
     private IEnumerator musicAbilityCoroutine()
@@ -300,6 +325,18 @@ public class FPSMovement : MonoBehaviour
         Debug.Log("Ability is recharged");
         canUseAbility_Music = true;
     }
+
+    private IEnumerator musicAbilityCoroutineDeafen()
+    {
+        yield return new WaitForSeconds(MusicabilityActiveSeconds);
+        Debug.Log("Ability has ended");
+        abilityActive_Music = false;
+
+        yield return new WaitForSeconds(MusicabilityCooldownSeconds);
+        Debug.Log("Ability is recharged");
+        canUseAbility_Music = true;
+    }
+
     private IEnumerator CoinAbilityCoroutine()
     {
         yield return new WaitForSeconds(CoinabilityActiveSeconds);
