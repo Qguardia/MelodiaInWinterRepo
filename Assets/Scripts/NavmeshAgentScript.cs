@@ -41,7 +41,10 @@ public class NavmeshAgentScript : MonoBehaviour
     public bool coinHeard;
     public Transform Coin;
 
-    public float InvestigateSpeed; 
+    public float InvestigateSpeed;
+    //Deaf/stunned
+
+    public bool isStunned;
 
     // This enemy uses an integer to flag the AI state:
 
@@ -211,6 +214,20 @@ public class NavmeshAgentScript : MonoBehaviour
             }
 
             // StartCoroutine(RotateInital());
+            if (AIState == 8)
+            {
+                Debug.Log("Hit Registered");
+                while (isStunned == true)
+                {
+                    DeafenedState();
+                    Debug.Log("Target deafened");
+                }
+                if (isStunned == false)
+                {
+                    DelayedSwitch();
+                    ResetJobState();
+                }
+            }
         }
     }
 
@@ -223,6 +240,12 @@ public class NavmeshAgentScript : MonoBehaviour
            }*/
         DelayedSwitch();
         transform.rotation = initialRotation;
+    }
+    private IEnumerator DeafenedState()
+    {
+        agent.speed = patrolSpeed - 10;
+        yield return new WaitForSeconds(8);
+        isStunned = false;
     }
 
 }

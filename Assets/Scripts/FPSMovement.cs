@@ -150,10 +150,8 @@ public class FPSMovement : MonoBehaviour
                 switch(AbilityChange.mode)
                 {
                     case ViolinMode.Projectile:
-                        Debug.Log("Target Stunned");
-
+                      
                         AbilityChange.Projectile();
-
                         StartCoroutine(MusicAbilityCooldown());
                         break;
 
@@ -161,6 +159,7 @@ public class FPSMovement : MonoBehaviour
                         Debug.Log("Distraction Played");
 
                         AbilityChange.Distraction();
+                        Debug.Log("Distraction ended");
 
                         StartCoroutine(MusicAbilityCooldown());
                         break;
@@ -286,13 +285,13 @@ public class FPSMovement : MonoBehaviour
     //Ability Lists 
     void FindSoundOutput()
     {
-        if (abilityActive_Music)
+       /* if (abilityActive_Music)
         {
             Debug.Log("MakeNoise");
             soundBox.gameObject.SetActive(true);
             soundBox.AbilitySoundRange();
             return;
-        }
+        }*/
 
         if (!isInputting) 
         {

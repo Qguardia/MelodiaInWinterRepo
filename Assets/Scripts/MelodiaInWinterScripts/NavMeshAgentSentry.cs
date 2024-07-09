@@ -235,6 +235,7 @@ public class NavMeshAgentSentry : MonoBehaviour
             } if (isStunned == false)
             {
                 DelayedSwitch();
+                AIState = 4;
             }
 
         }
@@ -247,7 +248,7 @@ public class NavMeshAgentSentry : MonoBehaviour
     }
     private IEnumerator DeafenedState()
     {
-        AIState = 4;
+        agent.speed = patrolSpeed - 10;
         yield return new WaitForSeconds(8);
         isStunned = false;
     }
