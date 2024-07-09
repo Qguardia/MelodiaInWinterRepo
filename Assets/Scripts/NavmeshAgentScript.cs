@@ -124,7 +124,7 @@ public class NavmeshAgentScript : MonoBehaviour
     {
         guardPosition = transform.position;
 
-        if while (AIState == 8)
+        if (AIState == 8)
         {
             Debug.Log("Hit Registered");
             while (isStunned == true)
@@ -137,7 +137,9 @@ public class NavmeshAgentScript : MonoBehaviour
                 DelayedSwitch();
                 ResetJobState();
             }
-        }else if (AIState == 1)
+        }
+
+        if (AIState == 1)
         {
             agent.speed = chaseSpeed;
             agent.SetDestination(target.position);
@@ -147,7 +149,9 @@ public class NavmeshAgentScript : MonoBehaviour
             {
                 AIState = 3;
             }
-        }else if (AIState == 2)
+        }
+
+        if (AIState == 2) // HEAD TO LAST PLACE PLAYER WAS SEEN 
         {
             agent.speed = chaseSpeed;
             seenDist = Vector3.Distance(lastSeenAt, guardPosition);
@@ -161,13 +165,15 @@ public class NavmeshAgentScript : MonoBehaviour
                 Invoke("DelayedSwitch", delay);
                 seenDist = 100;
             }
-        } else if (AIState == 3)
+        }
+
+        if (AIState == 3) // ON PATROL -- THIS ALL WORKS AS DESIRED. 
         {
             agent.speed = patrolSpeed;
             currentDestination = wayPoints[PatrolPoint].transform;
             dist = Vector3.Distance(currentDestination.position, transform.position);
             //Debug.Log("No of points: " + PatrolPointCount + " Current: " + PatrolPoint);
-            // Debug.Log("HI"); 
+           // Debug.Log("HI"); 
             if (dist > patrolCheckRange)
             {
                 agent.SetDestination(currentDestination.position);
@@ -180,13 +186,16 @@ public class NavmeshAgentScript : MonoBehaviour
             else if (dist <= patrolCheckRange && PatrolPoint < (PatrolPointCount - 1))
             {
                 PatrolPoint++;
-
+                
             }
-        }else if (AIState == 4)// GUARD WHERE YOU ARE.
+        }
+
+        if (AIState == 4) // GUARD WHERE YOU ARE.
         {
             // NOTHING!
+        }
 
-        }else if (AIState == 5)// RETURN TO GUARD STATION
+        if (AIState == 5) // RETURN TO GUARD STATION
         {
             agent.speed = patrolSpeed;
             currentDestination = wayPoints[0].transform;
@@ -201,10 +210,14 @@ public class NavmeshAgentScript : MonoBehaviour
                 gameObject.transform.rotation = wayPoints[0].transform.rotation;
                 AIState = 4;
             }
-        }else if (AIState == 6)
+        }
+
+        if (AIState == 6)
         {
             // Set up to head to a location given by an alarm or something. Needs a 'Last Seen At'
-        }else if (AIState == 7)//Coin Distraction 
+        }
+
+        if (AIState == 7) //DistractionByCoin
         {
             hasResetRotation = false;
             agent.speed = InvestigateSpeed;
@@ -215,103 +228,12 @@ public class NavmeshAgentScript : MonoBehaviour
                 StartCoroutine(RotateInital());
                 coinHeard = false;
             }
+
+            // StartCoroutine(RotateInital());
         }
+    }
 
-        /* if (AIState == 1)
-         {
-             agent.speed = chaseSpeed;
-             agent.SetDestination(target.position);
-             lastSeenAt = target.transform.position;
-
-             if (player.GetComponent<PlayerHealth>().playerIsAlive == false) // If player is dead, AI goes to patrol
-             {
-                 AIState = 3;
-             }
-         }
-
-         if (AIState == 2) // HEAD TO LAST PLACE PLAYER WAS SEEN 
-         {
-             agent.speed = chaseSpeed;
-             seenDist = Vector3.Distance(lastSeenAt, guardPosition);
-             if (seenDist > 0.5)
-             {
-                 Invoke("TryToFireGun", delay);
-                 agent.SetDestination(lastSeenAt);
-             }
-             else if (seenDist <= 0.5)
-             {
-                 Invoke("DelayedSwitch", delay);
-                 seenDist = 100;
-             }
-         }
-
-         if (AIState == 3) // ON PATROL -- THIS ALL WORKS AS DESIRED. 
-         {
-             agent.speed = patrolSpeed;
-             currentDestination = wayPoints[PatrolPoint].transform;
-             dist = Vector3.Distance(currentDestination.position, transform.position);
-             //Debug.Log("No of points: " + PatrolPointCount + " Current: " + PatrolPoint);
-            // Debug.Log("HI"); 
-             if (dist > patrolCheckRange)
-             {
-                 agent.SetDestination(currentDestination.position);
-             }
-             else if (dist <= patrolCheckRange && PatrolPoint == (PatrolPointCount - 1))
-             {
-                 PatrolPoint = 0;
-             }
-
-             else if (dist <= patrolCheckRange && PatrolPoint < (PatrolPointCount - 1))
-             {
-                 PatrolPoint++;
-
-             }
-         }
-
-         if (AIState == 4) // GUARD WHERE YOU ARE.
-         {
-             // NOTHING!
-         }
-
-         if (AIState == 5) // RETURN TO GUARD STATION
-         {
-             agent.speed = patrolSpeed;
-             currentDestination = wayPoints[0].transform;
-             dist = Vector3.Distance(currentDestination.position, transform.position);
-             if (dist > patrolCheckRange)
-             {
-                 agent.SetDestination(currentDestination.position);
-             }
-             else
-             {
-                 gameObject.transform.position = wayPoints[0].transform.position;
-                 gameObject.transform.rotation = wayPoints[0].transform.rotation;
-                 AIState = 4;
-             }
-         }
-
-         if (AIState == 6)
-         {
-             // Set up to head to a location given by an alarm or something. Needs a 'Last Seen At'
-         }
-
-         if (AIState == 7) //DistractionByCoin
-         {
-             hasResetRotation = false;
-             agent.speed = InvestigateSpeed;
-             //agent.SetDestination(target.position);
-             if (coinHeard == true)
-             {
-                 transform.LookAt(GameObject.FindGameObjectWithTag("Coin").transform);
-                 StartCoroutine(RotateInital());
-                 coinHeard = false;
-             }
-
-             // StartCoroutine(RotateInital());
-         }
-     }*/
-
-        private IEnumerator RotateInital()
+    private IEnumerator RotateInital()
     {
         yield return new WaitForSeconds(5);
         /*   if (AIState == 4)
