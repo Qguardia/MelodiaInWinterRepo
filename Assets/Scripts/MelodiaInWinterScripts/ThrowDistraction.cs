@@ -28,18 +28,26 @@ public class ThrowDistraction : MonoBehaviour
             CoinSoundBox.gameObject.GetComponent<BoxCollider>().enabled = true;
             CoinSoundBoxAoE.gameObject.GetComponent<SphereCollider>().enabled = true;
 
-            if (navmeshComponent != null)
+            if (navmeshComponent != null && navmeshComponent.AIState == 8)//added for deafen
+            {
+
+            }else if (navmeshComponent != null)//original
             {
                 navmeshComponent.coinHeard = true;
                 navmeshComponent.AIState = 7; //Chase the player
             }
-            if (navmeshComponentSEN != null)
+
+            if (navmeshComponentSEN != null && navmeshComponentSEN.AIState == 8)//added for deafen
+            {
+
+                // navmeshComponentSEN.coinHeard = true;
+            }else if (navmeshComponentSEN != null) // original
             {
                 Debug.Log("Coin heard");
                 navmeshComponentSEN.coinHeard = true;
                 navmeshComponentSEN.AIState = 7;
-                // navmeshComponentSEN.coinHeard = true;
             }
+
         }
     }
 }

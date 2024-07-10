@@ -76,6 +76,8 @@ public class FPSMovement : MonoBehaviour
     public float CoinabilityActiveSeconds;
     public float CoinabilityCooldownSeconds;
 
+    public int CoinsRemaining;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -246,11 +248,12 @@ public class FPSMovement : MonoBehaviour
         {
             m_finalSpeed = m_movementSpeed * m_runSpeed;
             sprinting = true;
+            //if crouched, then sprinting, forces player to stand up
             m_camera.transform.position = Vector3.Lerp(m_camera.transform.position, m_cameraStandPoint.transform.position, Time.deltaTime * lerpRate);
             m_charController.height = 1.8f;
             crouching = false;
         } 
-        else if (Input.GetKeyUp(m_sprint)) // if key is uo, don't sprint
+        else if (Input.GetKeyUp(m_sprint)) // if key is up, don't sprint
         {
             sprinting = false;
             m_finalSpeed = m_movementSpeed;
