@@ -51,8 +51,6 @@ public class ViewZoneCheck : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        NavmeshAgentScript navmeshComponent = other.GetComponent<NavmeshAgentScript>();
-        NavMeshAgentSentry navmeshComponentSEN = other.GetComponent<NavMeshAgentSentry>();
 
         if (other.gameObject.tag == "PlayerBody")
         {

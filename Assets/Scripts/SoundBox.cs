@@ -17,11 +17,18 @@ public class SoundBox : MonoBehaviour
     {
         NavmeshAgentScript navmeshComponent = col.GetComponent<NavmeshAgentScript>();
         NavMeshAgentSentry navmeshComponentSEN = col.GetComponent<NavMeshAgentSentry>();
-        if (navmeshComponent != null) 
+        if (navmeshComponent != null && navmeshComponent.AIState == 8) 
         {
-            navmeshComponent.AIState = 1; //Chase the player
+            navmeshComponent.AIState = 4; //Chase the player
+        }else if (navmeshComponent != null)
+        {
+            navmeshComponent.AIState = 1;
         }
-        if (navmeshComponentSEN != null)
+
+        if (navmeshComponentSEN != null && navmeshComponentSEN.AIState == 8)
+        {
+            navmeshComponentSEN.AIState = 4;
+        }else if ( navmeshComponent != null)
         {
             navmeshComponentSEN.AIState = 1;
         }
