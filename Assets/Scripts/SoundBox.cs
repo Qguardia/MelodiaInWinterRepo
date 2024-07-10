@@ -28,7 +28,7 @@ public class SoundBox : MonoBehaviour
         if (navmeshComponentSEN != null && navmeshComponentSEN.AIState == 8)
         {
             navmeshComponentSEN.AIState = 4;
-        }else if ( navmeshComponent != null)
+        }else if (navmeshComponent != null)
         {
             navmeshComponentSEN.AIState = 1;
         }

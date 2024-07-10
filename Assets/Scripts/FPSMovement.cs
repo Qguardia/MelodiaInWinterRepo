@@ -68,6 +68,10 @@ public class FPSMovement : MonoBehaviour
     public float MusicabilityActiveSeconds;
     public float MusicabilityCooldownSeconds;
 
+    public float MusicAbilityProjectileActiveSeconds;
+    public float MusicAbilityProjectileCooldownSeconds;
+
+
     // ability activation and delay - Coin
 
     public bool canUseAbility_Coin;
@@ -138,6 +142,7 @@ public class FPSMovement : MonoBehaviour
             }*/
             
         }
+        FindSoundOutput();
         //Activate Melody Ability
         if (Input.GetKeyDown(m_MelodyAbility))
         {
@@ -155,13 +160,12 @@ public class FPSMovement : MonoBehaviour
                     case ViolinMode.Projectile:
                       
                         AbilityChange.Projectile();
-                        StartCoroutine(MusicAbilityCooldown());
+                        StartCoroutine(ViolinProjectileCoroutine());
                         break;
 
                     case ViolinMode.Distraction:
-
                         AbilityChange.Distraction();
-                        StartCoroutine(MusicAbilityCooldown());
+                        StartCoroutine(DistractionMusicAbilityCooldown());
                         break;
                 }
             }
@@ -180,7 +184,6 @@ public class FPSMovement : MonoBehaviour
         RunCheck(); // Checks the input for run
         JumpCheck(); // Checks if we can jump
 
-        FindSoundOutput();
 
 
         if (Input.GetKeyDown(m_crouch))
@@ -364,16 +367,16 @@ public class FPSMovement : MonoBehaviour
     {
         //...............
         
-        yield return new WaitForSeconds(MusicabilityActiveSeconds);
+        yield return new WaitForSeconds(MusicAbilityProjectileActiveSeconds);
         Debug.Log("Ability has ended");
         abilityActive_Music = false;
 
-        yield return new WaitForSeconds(MusicabilityCooldownSeconds);
+        yield return new WaitForSeconds(MusicAbilityProjectileCooldownSeconds);
         Debug.Log("Ability is recharged");
         canUseAbility_Music = true;
     }
 
-    private IEnumerator MusicAbilityCooldown()
+    private IEnumerator DistractionMusicAbilityCooldown()
     {
         yield return new WaitForSeconds(MusicabilityActiveSeconds);
         Debug.Log("Ability has ended");
