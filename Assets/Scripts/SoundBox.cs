@@ -34,7 +34,7 @@ public class SoundBox : MonoBehaviour
 
     public void CrouchSoundRange()
     {
-        soundBox.size = new Vector3 (0.5f * triggerScaleBase.x, 0.5f * triggerScaleBase.y, 0.5f * triggerScaleBase.z);
+        soundBox.size = new Vector3(0.5f * triggerScaleBase.x, 0.5f * triggerScaleBase.y, 0.5f * triggerScaleBase.z);
     }
 
     public void RunSoundRange()
@@ -44,7 +44,7 @@ public class SoundBox : MonoBehaviour
 
     public void AbilitySoundRange()
     {
-        soundBox.size = new Vector3 (10f * triggerScaleBase.x, 10f * triggerScaleBase.y, 10f * triggerScaleBase.z);
+        soundBox.size = new Vector3(10f * triggerScaleBase.x, 10f * triggerScaleBase.y, 10f * triggerScaleBase.z);
     }
 }
 

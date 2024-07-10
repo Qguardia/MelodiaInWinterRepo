@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.ProBuilder.MeshOperations;
 using static Violin;
 
 // THIS PLAYER MOVE CLASS WILL ALLOW THE GAMEOBJECT TO MOVE BASED ON CHARACTERCONTROLLER
@@ -245,6 +246,9 @@ public class FPSMovement : MonoBehaviour
         {
             m_finalSpeed = m_movementSpeed * m_runSpeed;
             sprinting = true;
+            m_camera.transform.position = Vector3.Lerp(m_camera.transform.position, m_cameraStandPoint.transform.position, Time.deltaTime * lerpRate);
+            m_charController.height = 1.8f;
+            crouching = false;
         } 
         else if (Input.GetKeyUp(m_sprint)) // if key is uo, don't sprint
         {
@@ -282,7 +286,7 @@ public class FPSMovement : MonoBehaviour
     //Ability Lists 
     void FindSoundOutput()
     {
-       /* if (abilityActive_Music)
+        /*if (abilityActive_Music)
         {
             Debug.Log("MakeNoise");
             soundBox.gameObject.SetActive(true);
@@ -296,12 +300,11 @@ public class FPSMovement : MonoBehaviour
             return;
         }
 
-        if (crouching) 
+        while (crouching) 
         {
             soundBox.gameObject.SetActive(true);
             soundBox.CrouchSoundRange();
-            Debug.Log("Is Crouching");
-
+            return;
         }
 
         if (sprinting == true)
@@ -309,7 +312,6 @@ public class FPSMovement : MonoBehaviour
             soundBox.gameObject.SetActive(true);
             soundBox.RunSoundRange();
         }
-
 
         else 
         {
