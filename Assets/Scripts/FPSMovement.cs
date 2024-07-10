@@ -357,10 +357,12 @@ public class FPSMovement : MonoBehaviour
         {
             if (AbilityChange.mode == Violin.ViolinMode.Projectile)
             {
+                Debug.Log("Ability Changed to Distraction");
                 AbilityChange.mode = Violin.ViolinMode.Distraction;
             }
             else if (AbilityChange.mode == Violin.ViolinMode.Distraction)
             {
+                Debug.Log("Ability Changed to Projectile");
                 AbilityChange.mode = Violin.ViolinMode.Projectile;
             }
         }
@@ -374,33 +376,33 @@ public class FPSMovement : MonoBehaviour
         //...............
         
         yield return new WaitForSeconds(MusicAbilityProjectileActiveSeconds);
-        Debug.Log("Ability has ended");
+        Debug.Log("Projectile Ability has ended");
         abilityActive_Music = false;
 
         yield return new WaitForSeconds(MusicAbilityProjectileCooldownSeconds);
-        Debug.Log("Ability is recharged");
+        Debug.Log("Projectile Ability is recharged");
         canUseAbility_Music = true;
     }
 
     private IEnumerator DistractionMusicAbilityCooldown()
     {
         yield return new WaitForSeconds(MusicabilityActiveSeconds);
-        Debug.Log("Ability has ended");
+        Debug.Log("Distraction Ability has ended");
         abilityActive_Music = false;
 
         yield return new WaitForSeconds(MusicabilityCooldownSeconds);
-        Debug.Log("Ability is recharged");
+        Debug.Log("Distraction Ability is recharged");
         canUseAbility_Music = true;
     }
 
     private IEnumerator CoinAbilityCoroutine()
     {
         yield return new WaitForSeconds(CoinabilityActiveSeconds);
-        Debug.Log("Ability has ended");
+        Debug.Log("Coin Ability has ended");
         AbilityActive_Coin = false;
 
         yield return new WaitForSeconds(CoinabilityCooldownSeconds);
-        Debug.Log("Ability is recharged");
+        Debug.Log("Coin Ability is recharged");
         canUseAbility_Coin = true;
     }
 }

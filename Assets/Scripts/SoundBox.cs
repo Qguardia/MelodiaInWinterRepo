@@ -6,11 +6,13 @@ public class SoundBox : MonoBehaviour
 {
     public BoxCollider soundBox;
     private Vector3 triggerScaleBase;
+    public bool DistractionActive;
 
     void Start()
     {
         soundBox = GetComponent<BoxCollider>();
         triggerScaleBase = soundBox.size;
+        
     }
 
     void OnTriggerEnter(Collider col) 
@@ -19,16 +21,16 @@ public class SoundBox : MonoBehaviour
         NavMeshAgentSentry navmeshComponentSEN = col.GetComponent<NavMeshAgentSentry>();
         if (navmeshComponent != null && navmeshComponent.AIState == 8) 
         {
-            navmeshComponent.AIState = 4; //Chase the player
+            navmeshComponent.AIState = 4; //Walking near deafened enemy
         }else if (navmeshComponent != null)
         {
-            navmeshComponent.AIState = 1;
+            navmeshComponent.AIState = 1; //Walking near enemy normally
         }
 
         if (navmeshComponentSEN != null && navmeshComponentSEN.AIState == 8)
         {
             navmeshComponentSEN.AIState = 4;
-        }else if (navmeshComponent != null)
+        }else if (navmeshComponentSEN != null)
         {
             navmeshComponentSEN.AIState = 1;
         }
