@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundBox : MonoBehaviour
 {
-    private BoxCollider soundBox;
+    public BoxCollider soundBox;
     private Vector3 triggerScaleBase;
 
     void Start()

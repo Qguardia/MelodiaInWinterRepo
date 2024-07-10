@@ -35,10 +35,9 @@ public class Violin : MonoBehaviour
 
     public void Distraction()
     {
-        PlayerInput.abilityActive_Music = true;
-        PlayerInput.soundBox.gameObject.SetActive(true);
-        Debug.Log("AAAAAAAA");
-        PlayerInput.soundBox.AbilitySoundRange();
+            PlayerInput.soundBox.gameObject.SetActive(true);
+            PlayerInput.soundBox.AbilitySoundRange();
+            return;
     }
 
 }

@@ -124,6 +124,25 @@ public class NavMeshAgentSentry : MonoBehaviour
     {
         guardPosition = transform.position;
 
+        if (AIState == 8)
+        {
+            //Debug.Log("Hit Registered");
+
+            if (isStunned == true)
+            {
+                DeafenedState();
+                // Debug.Log("Target deafened");
+            }
+
+            else
+            {
+                DelayedSwitch();
+                ResetJobState();
+            }
+
+            return;
+        }
+
         if (AIState == 1)
         {
             hasResetRotation = false;
@@ -223,20 +242,6 @@ public class NavMeshAgentSentry : MonoBehaviour
             
            // StartCoroutine(RotateInital());
             
-
-        }
-
-        while (AIState == 8) //DETROIT: BECOME DEAF
-        {
-            Debug.Log("Hit Registered");
-            while (isStunned == true)
-            {
-                DeafenedState();
-            } if (isStunned == false)
-            {
-                DelayedSwitch();
-                AIState = 4;
-            }
 
         }
     }

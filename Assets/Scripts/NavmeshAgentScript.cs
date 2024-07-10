@@ -47,6 +47,8 @@ public class NavmeshAgentScript : MonoBehaviour
 
     public bool isStunned;
 
+    public long test;
+
     // This enemy uses an integer to flag the AI state:
 
     // 1 = Head to the player and raycast to check LOS again
@@ -126,17 +128,20 @@ public class NavmeshAgentScript : MonoBehaviour
 
         if (AIState == 8)
         {
-            Debug.Log("Hit Registered");
-            while (isStunned == true)
+            //Debug.Log("Hit Registered");
+
+            if (isStunned == true)
             {
                 DeafenedState();
-                Debug.Log("Target deafened");
+               // Debug.Log("Target deafened");
             }
-            if (isStunned == false)
+            
+            else
             {
                 DelayedSwitch();
                 ResetJobState();
             }
+            return;
         }
 
         if (AIState == 1)
@@ -186,7 +191,7 @@ public class NavmeshAgentScript : MonoBehaviour
             else if (dist <= patrolCheckRange && PatrolPoint < (PatrolPointCount - 1))
             {
                 PatrolPoint++;
-                
+
             }
         }
 
@@ -249,5 +254,4 @@ public class NavmeshAgentScript : MonoBehaviour
         yield return new WaitForSeconds(8);
         isStunned = false;
     }
-
 }
