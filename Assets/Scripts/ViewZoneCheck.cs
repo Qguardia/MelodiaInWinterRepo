@@ -36,7 +36,7 @@ public class ViewZoneCheck : MonoBehaviour
             {
                 //enemyGun.TryToFireGun();
                 parent.gameObject.GetComponent<NavmeshAgentScript>().AIState = 1; // HEAD TOWARDS PLAYER
-                Debug.Log("Cars");
+                //Debug.Log("Cars");
 
                 enemyGun.TryToFireGun();
             }
@@ -59,7 +59,7 @@ public class ViewZoneCheck : MonoBehaviour
 
             if (inLOS == true)
             {
-                Debug.Log("Hi");
+               //Debug.Log("Hi");
                 parent.gameObject.GetComponent<NavmeshAgentScript>().AIState = 1; // HEAD TOWARDS PLAYER
                 
                 //StartCoroutine(LOSDelay()); // Fire bullet before delay
@@ -111,7 +111,7 @@ public class ViewZoneCheck : MonoBehaviour
                 //Debug.Log("RAYCAST HIT PLAYERBODY - WOOOOOOOOOOOOOOOOOO!");
                 if (lightChecker.gameObject.GetComponent<FPSLightCheck>().isVisible == true)
                 {
-                    Debug.Log("Cans see");
+                    //Debug.Log("Cans see");
                     inLOS = true;
                 }
                 else

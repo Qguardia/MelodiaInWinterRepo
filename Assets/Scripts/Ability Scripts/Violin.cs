@@ -12,8 +12,10 @@ public class Violin : MonoBehaviour
     
     public GameObject DeafeningProjectile;
     public GameObject ProjectileSpawn;
+    public BoxCollider Noise;
 
     FPSMovement PlayerInput;
+    SoundBox Hearing;
 
     public ViolinMode mode;
 
@@ -21,6 +23,7 @@ public class Violin : MonoBehaviour
     {
         ProjectileSpawn = transform.GetChild(0).gameObject;
         PlayerInput = GetComponent<FPSMovement>();
+        Hearing = GetComponent<SoundBox>();
     }
 
     void Update()
@@ -36,8 +39,10 @@ public class Violin : MonoBehaviour
     public void Distraction()
     {
             PlayerInput.soundBox.gameObject.SetActive(true);
+        Debug.Log("Soundbox active");
             PlayerInput.soundBox.AbilitySoundRange();
-            return;
+        Debug.Log("Range active");
+        return;
     }
 
 }
