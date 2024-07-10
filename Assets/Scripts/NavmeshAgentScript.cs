@@ -186,12 +186,13 @@ public class NavmeshAgentScript : MonoBehaviour
             else if (dist <= patrolCheckRange && PatrolPoint == (PatrolPointCount - 1))
             {
                 PatrolPoint = 0;
+                DelayedSwitch();
             }
 
             else if (dist <= patrolCheckRange && PatrolPoint < (PatrolPointCount - 1))
             {
                 PatrolPoint++;
-
+                DelayedSwitch();
             }
         }
 
