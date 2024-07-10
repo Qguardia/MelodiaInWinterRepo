@@ -156,11 +156,8 @@ public class FPSMovement : MonoBehaviour
                         break;
 
                     case ViolinMode.Distraction:
-                        Debug.Log("Distraction Played");
 
                         AbilityChange.Distraction();
-                        Debug.Log("Distraction ended");
-
                         StartCoroutine(MusicAbilityCooldown());
                         break;
                 }
@@ -303,6 +300,8 @@ public class FPSMovement : MonoBehaviour
         {
             soundBox.gameObject.SetActive(true);
             soundBox.CrouchSoundRange();
+            Debug.Log("Is Crouching");
+
         }
 
         if (sprinting == true)

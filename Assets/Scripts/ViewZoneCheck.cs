@@ -35,8 +35,9 @@ public class ViewZoneCheck : MonoBehaviour
             if (inLOS == true)
             {
                 //enemyGun.TryToFireGun();
-                Debug.Log("Cars");
                 parent.gameObject.GetComponent<NavmeshAgentScript>().AIState = 1; // HEAD TOWARDS PLAYER
+                Debug.Log("Cars");
+
                 enemyGun.TryToFireGun();
             }
             else
@@ -50,6 +51,9 @@ public class ViewZoneCheck : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        NavmeshAgentScript navmeshComponent = other.GetComponent<NavmeshAgentScript>();
+        NavMeshAgentSentry navmeshComponentSEN = other.GetComponent<NavMeshAgentSentry>();
+
         if (other.gameObject.tag == "PlayerBody")
         {
             //Debug.Log("Player is in enemy view zone");

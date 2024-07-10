@@ -20,7 +20,7 @@ public class DeafeningNoteProjectile : MonoBehaviour
         {
             navmeshComponent.isStunned = true;
             navmeshComponent.AIState = 8;
-            Debug.Log("Is Hit");
+            //Debug.Log("Is Hit");
 
             WaitTime();
 
