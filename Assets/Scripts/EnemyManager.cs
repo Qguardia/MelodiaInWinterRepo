@@ -6,6 +6,7 @@ public class EnemyManager : MonoBehaviour
 {
     public List<GameObject> enemyList = new List<GameObject>();
     private NavmeshAgentScript enemyNMA;
+    private NavmeshAgentScriptSentry EnemyHSP;
 
     // Start is called before the first frame update
     void Start()
@@ -27,8 +28,21 @@ public class EnemyManager : MonoBehaviour
                 enemyNMA.AIState = 4;
             }
 
+            EnemyHSP = e.GetComponent<NavmeshAgentScriptSentry>();
+            if (EnemyHSP.jobIsPatrol)
+            {
+                EnemyHSP.AIState = 3;
+            }
+            else
+            {
+                EnemyHSP.AIState = 4;
+            }
+
             e.transform.position = enemyNMA.wayPoints[0].transform.position;
             e.transform.rotation = enemyNMA.wayPoints[0].transform.rotation;
+
+            e.transform.position = EnemyHSP.wayPoints[0].transform.position;
+            e.transform.rotation = EnemyHSP.wayPoints[0].transform.rotation;
         }
         Debug.Log("All Enemies reset");
     }

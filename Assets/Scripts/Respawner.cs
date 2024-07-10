@@ -10,7 +10,7 @@ public class Respawner : MonoBehaviour
     private Transform checkpointLocation;
     public GameObject player;
     private GameObject startingPoint;
-    private CharacterController charController;
+    public FPSMovement charController;
     private EnemyManager enemyManager;
     private GameObject lightChecker;
     private FPSLightCheck FPSlc;
@@ -24,7 +24,7 @@ public class Respawner : MonoBehaviour
     {
         //DontDestroyOnLoad(this.gameObject);
         player = GameObject.FindGameObjectWithTag("Player");
-        charController = player.gameObject.GetComponent<CharacterController>();
+        charController = player.gameObject.GetComponent <FPSMovement>();
         enemyManager = GetComponent<EnemyManager>();
         lightChecker = GameObject.Find("lightChecker");
         FPSlc = lightChecker.GetComponent<FPSLightCheck>();
@@ -58,7 +58,7 @@ public class Respawner : MonoBehaviour
 
     public void RespawnPlayer()
     {
-        charController.enabled = false;
+        //charController.enabled = false;
 
         enemyManager.ResetEnemies();
 
@@ -70,8 +70,8 @@ public class Respawner : MonoBehaviour
             FPSlc.VisibilityInitialised();
         }
 
-        Invoke("ReactivateController", 0.5f);
-
+        //Invoke("ReactivateController", 0.5f);
+        ReactivateController();
     }
 
     public void UpdateCheckPoints()
@@ -90,8 +90,9 @@ public class Respawner : MonoBehaviour
         }
     }
 
-    private void ReactivateController()
+    private IEnumerator ReactivateController()
     {
+        yield return new WaitForSeconds(0.5f);
         charController.enabled = true;
     }
 
