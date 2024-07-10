@@ -12,37 +12,53 @@ public class EnemyManager : MonoBehaviour
     void Start()
     {
         enemyList.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
+       // enemyNMA = GetComponent<NavmeshAgentScript>();
+       // EnemyHSP = GetComponent<NavmeshAgentScriptSentry>();
+
     }
 
     public void ResetEnemies()
     {
         foreach (GameObject e in enemyList)
         {
-            enemyNMA = e.GetComponent<NavmeshAgentScript>();
-            if (enemyNMA.jobIsPatrol)
-            {
-                enemyNMA.AIState = 3;
-            }
-            else
-            {
-                enemyNMA.AIState = 4;
+
+            if(enemyNMA != null)
+            { 
+                 enemyNMA = e.GetComponent<NavmeshAgentScript>();
+                 if (enemyNMA.jobIsPatrol)
+                 {
+                     enemyNMA.AIState = 3;
+                 }
+                 else
+                 {
+                     enemyNMA.AIState = 4;
+                 }
             }
 
-            EnemyHSP = e.GetComponent<NavmeshAgentScriptSentry>();
-            if (EnemyHSP.jobIsPatrol)
+            if (EnemyHSP != null)
             {
-                EnemyHSP.AIState = 3;
-            }
-            else
-            {
-                EnemyHSP.AIState = 4;
+                EnemyHSP = e.GetComponent<NavmeshAgentScriptSentry>();
+                if (EnemyHSP.jobIsStandGaurd)
+                {
+                    EnemyHSP.AIState = 4;
+                }
+                else
+                {
+                    EnemyHSP.AIState = 3;
+                }
             }
 
-            e.transform.position = enemyNMA.wayPoints[0].transform.position;
-            e.transform.rotation = enemyNMA.wayPoints[0].transform.rotation;
+            if (enemyNMA != null)
+            {
+                e.transform.position = enemyNMA.wayPoints[0].transform.position;
+                e.transform.rotation = enemyNMA.wayPoints[0].transform.rotation;
+            }
 
-            e.transform.position = EnemyHSP.wayPoints[0].transform.position;
-            e.transform.rotation = EnemyHSP.wayPoints[0].transform.rotation;
+            if (EnemyHSP != null)
+            {
+                e.transform.position = EnemyHSP.wayPoints[0].transform.position;
+                e.transform.rotation = EnemyHSP.wayPoints[0].transform.rotation;
+            }
         }
         Debug.Log("All Enemies reset");
     }

@@ -58,7 +58,8 @@ public class Respawner : MonoBehaviour
 
     public void RespawnPlayer()
     {
-        //charController.enabled = false;
+        Debug.LogError("FoundError");
+        charController.enabled = false;
 
         enemyManager.ResetEnemies();
 
@@ -90,12 +91,17 @@ public class Respawner : MonoBehaviour
         }
     }
 
-    private IEnumerator ReactivateController()
+   // private IEnumerator ReactivateController()
+   // {
+   //     yield return new WaitForSeconds(0.5f);
+   //     charController.enabled = true;
+   // }
+
+    private void ReactivateController()
     {
-        yield return new WaitForSeconds(0.5f);
+       // yield return new WaitForSeconds(0.5f);
         charController.enabled = true;
     }
-
 
     /* OLD CODE FOR CHECKPOINTS WITH LEVEL LOADING
     private void OnLevelWasLoaded(int level)
