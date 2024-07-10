@@ -143,6 +143,7 @@ public class FPSMovement : MonoBehaviour
             
         }
         FindSoundOutput();
+
         //Activate Melody Ability
         if (Input.GetKeyDown(m_MelodyAbility))
         {
@@ -332,9 +333,14 @@ public class FPSMovement : MonoBehaviour
             canUseAbility_Coin = false;
         }*/
 
-        if (AbilityActive_Coin)
+        if (AbilityActive_Coin && CoinsRemaining > 0)
         {
             CoinThrowposition.CoinThrow();
+            CoinsRemaining = CoinsRemaining - 1; 
+        }
+        if (CoinsRemaining <= 0)
+        {
+            print("No coins Remaining");
         }
       /*  if (canUseAbility_Music == true)
         {
