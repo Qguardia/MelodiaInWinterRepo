@@ -38,6 +38,7 @@ public class PlayerHealth : MonoBehaviour
         deathPanel = GameObject.Find("DeathPanel").GetComponent<Image>();
         lightCheck = GameObject.Find("lightChecker").GetComponent<FPSLightCheck>();
         charController = GetComponent<CharacterController>();
+        respawn = GetComponent<Respawner>();
 
         playerHealth = playerMaxHealth;
         healthText.text = "Health: " + playerHealth;
@@ -45,6 +46,7 @@ public class PlayerHealth : MonoBehaviour
         respawnText.text = "";
         deathText.text = "";
         deathPanel.gameObject.SetActive(false);
+
 
     }
 

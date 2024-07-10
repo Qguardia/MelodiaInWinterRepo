@@ -12,6 +12,9 @@ public class EnemyManager : MonoBehaviour
     void Start()
     {
         enemyList.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
+        enemyNMA = GetComponent<NavmeshAgentScript>();
+        EnemyHSP = GetComponent<NavmeshAgentScriptSentry>();
+
     }
 
     public void ResetEnemies()
@@ -29,13 +32,13 @@ public class EnemyManager : MonoBehaviour
             }
 
             EnemyHSP = e.GetComponent<NavmeshAgentScriptSentry>();
-            if (EnemyHSP.jobIsPatrol)
+            if (EnemyHSP.jobIsStandGaurd)
             {
-                EnemyHSP.AIState = 3;
+                EnemyHSP.AIState = 4;
             }
             else
             {
-                EnemyHSP.AIState = 4;
+                EnemyHSP.AIState = 3;
             }
 
             e.transform.position = enemyNMA.wayPoints[0].transform.position;
