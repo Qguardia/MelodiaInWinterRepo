@@ -62,6 +62,8 @@ public class FPSMovement : MonoBehaviour
     //Current Player State 
     
     public string PlayerState;
+    public CurrentPlayerState status;
+
     /*
     State 0 = Crouching
     State 1 = Standing
@@ -69,7 +71,6 @@ public class FPSMovement : MonoBehaviour
     State 3 = Idle ???
      */
 
-    public CurrentPlayerState status;
     //Coin ability location 
     public CoinTossAbility CoinThrowposition;
     
@@ -83,6 +84,10 @@ public class FPSMovement : MonoBehaviour
     public float MusicAbilityProjectileActiveSeconds;
     public float MusicAbilityProjectileCooldownSeconds;
 
+    //Current Selected Ability 
+
+    public string SelectedAbility;
+    public AbilityChecking Checker;
 
     // ability activation and delay - Coin
 
@@ -188,7 +193,8 @@ public class FPSMovement : MonoBehaviour
             }
             else
             {
-                Debug.Log("Ability is on cooldown");
+                Checker.currentAbility = "Violin Ability on Cooldown";
+                SelectedAbility = "Violin Ability on Cooldown";
             }
         }
         //Swapping Melody Ability 
@@ -370,14 +376,15 @@ public class FPSMovement : MonoBehaviour
         }
         if (CoinsRemaining <= 0)
         {
-            print("No coins Remaining");
+            CoinCounter.instance.OutofCoins();
+
         }
       /*  if (canUseAbility_Music == true)
         {
             canUseAbility_Coin = false;
         }*/
     }
-    void MelodySwap()
+    public void MelodySwap()
     {
         Violin AbilityChange;
         AbilityChange = GetComponent<Violin>();
@@ -387,11 +394,14 @@ public class FPSMovement : MonoBehaviour
         {
             if (AbilityChange.mode == Violin.ViolinMode.Projectile)
             {
+                Checker.currentAbility = "Distraction";
+                SelectedAbility = "Distraction";
                 Debug.Log("Ability Changed to Distraction");
                 AbilityChange.mode = Violin.ViolinMode.Distraction;
             }
             else if (AbilityChange.mode == Violin.ViolinMode.Distraction)
             {
+                Checker.currentAbility = "Deafen";
                 Debug.Log("Ability Changed to Projectile");
                 AbilityChange.mode = Violin.ViolinMode.Projectile;
             }
