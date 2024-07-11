@@ -31,6 +31,11 @@ public class AbilityChecking : MonoBehaviour
     void Update()
     {
         AbilityText.text = "Currently selected: " + currentAbility;
+
+        /*while ()
+        {
+            AbilityText.text = "Ability On Cooldown";
+        }*/
     }
 
 }

@@ -13,17 +13,19 @@ public class ToggleAbilityVisibility : MonoBehaviour
     void Start()
     {
         canUseAbility_Music = GetComponent<FPSMovement>();
-        AbilityToggle.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        while (canUseAbility_Music == false)
+        /*while (canUseAbility_Music == true)
         {
-            AbilityToggle.SetActive(true);
+            Debug.Log("cooldownvisible");
+            AbilityToggle.SetActive(false);
+            return;
         }
+            AbilityToggle.SetActive(true);
 
-        AbilityToggle.SetActive(false);
+        */
     }
 }
