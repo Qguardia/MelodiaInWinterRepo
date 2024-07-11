@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.ProBuilder.MeshOperations;
 using static Violin;
@@ -58,6 +59,17 @@ public class FPSMovement : MonoBehaviour
     public bool sprinting;
     //s public bool hasAbility = false;
 
+    //Current Player State 
+    
+    public string PlayerState;
+    /*
+    State 0 = Crouching
+    State 1 = Standing
+    State 2 = Running
+    State 3 = Idle ???
+     */
+
+    public CurrentPlayerState status;
     //Coin ability location 
     public CoinTossAbility CoinThrowposition;
     
@@ -81,6 +93,7 @@ public class FPSMovement : MonoBehaviour
     public float CoinabilityCooldownSeconds;
 
     public int CoinsRemaining;
+    public int value;
 
     // Start is called before the first frame update
     void Awake()
@@ -303,15 +316,21 @@ public class FPSMovement : MonoBehaviour
             soundBox.AbilitySoundRange();
             return;
         }*/
+       
+       // status = GetComponent<CurrentPlayerState>();
 
         if (!isInputting) 
         {
+            status.currentState = "Idle";
+            PlayerState = "Idle";
             soundBox.gameObject.SetActive(false);
             return;
         }
 
         while (crouching) 
         {
+            status.currentState = "Crouching";
+            PlayerState = "Crouching";
             soundBox.gameObject.SetActive(true);
             soundBox.CrouchSoundRange();
             return;
@@ -319,27 +338,35 @@ public class FPSMovement : MonoBehaviour
 
         if (sprinting == true)
         {
+            status.currentState = "Running";
+            PlayerState = "Running";
             soundBox.gameObject.SetActive(true);
             soundBox.RunSoundRange();
         }
 
         else 
         {
+            status.currentState = "Standing";
+            PlayerState = "Standing";
             soundBox.gameObject.SetActive(true);
             soundBox.NormalSoundRange();
         }
     }
     void FindCoinThrow()
     {
-       /* if (canUseAbility_Music == true)
-        {
-            canUseAbility_Coin = false;
-        }*/
+        /* if (canUseAbility_Music == true)
+         {
+             canUseAbility_Coin = false;
+         }*/
+       // CoinCounter coinCounter;
+       // coinCounter = GetComponent<CoinCounter>();
 
         if (AbilityActive_Coin && CoinsRemaining > 0)
         {
             CoinThrowposition.CoinThrow();
-            CoinsRemaining = CoinsRemaining - 1; 
+            CoinsRemaining = CoinsRemaining - 1;
+            CoinCounter.instance.LoseCoins(value);
+            
         }
         if (CoinsRemaining <= 0)
         {
