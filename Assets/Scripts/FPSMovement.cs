@@ -59,6 +59,17 @@ public class FPSMovement : MonoBehaviour
     public bool sprinting;
     //s public bool hasAbility = false;
 
+    //Current Player State 
+    
+    public float PlayerState;
+    /*
+    State 0 = Crouching
+    State 1 = Standing
+    State 2 = Running
+    State 3 = Idle ???
+     */
+
+
     //Coin ability location 
     public CoinTossAbility CoinThrowposition;
     
@@ -308,12 +319,14 @@ public class FPSMovement : MonoBehaviour
 
         if (!isInputting) 
         {
+            PlayerState = 3;
             soundBox.gameObject.SetActive(false);
             return;
         }
 
         while (crouching) 
         {
+            PlayerState = 0;
             soundBox.gameObject.SetActive(true);
             soundBox.CrouchSoundRange();
             return;
@@ -321,12 +334,14 @@ public class FPSMovement : MonoBehaviour
 
         if (sprinting == true)
         {
+            PlayerState = 2;
             soundBox.gameObject.SetActive(true);
             soundBox.RunSoundRange();
         }
 
         else 
         {
+            PlayerState = 1;
             soundBox.gameObject.SetActive(true);
             soundBox.NormalSoundRange();
         }
