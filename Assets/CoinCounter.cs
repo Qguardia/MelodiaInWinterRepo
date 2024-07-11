@@ -26,7 +26,14 @@ public class CoinCounter : MonoBehaviour
     }
     public void LoseCoins(int v)
     {
-        currentCoins -= v;
-        CoinText.text = "Coins remaining: " + currentCoins.ToString();
+        if(currentCoins > 0)
+        {
+            currentCoins -= v;
+            CoinText.text = "Coins remaining: " + currentCoins.ToString();
+        }
+    }
+    public void OutofCoins()
+    {
+        CoinText.text = "Out of Coins";
     }
 }

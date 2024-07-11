@@ -32,4 +32,5 @@ public class AbilityChecking : MonoBehaviour
     {
         AbilityText.text = "Currently selected: " + currentAbility;
     }
+
 }

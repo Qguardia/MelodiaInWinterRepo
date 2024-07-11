@@ -62,6 +62,7 @@ public class FPSMovement : MonoBehaviour
     //Current Player State 
     
     public string PlayerState;
+    public CurrentPlayerState status;
 
     /*
     State 0 = Crouching
@@ -70,7 +71,6 @@ public class FPSMovement : MonoBehaviour
     State 3 = Idle ???
      */
 
-    public CurrentPlayerState status;
     //Coin ability location 
     public CoinTossAbility CoinThrowposition;
     
@@ -193,7 +193,8 @@ public class FPSMovement : MonoBehaviour
             }
             else
             {
-                Debug.Log("Ability is on cooldown");
+                Checker.currentAbility = "Violin Ability on Cooldown";
+                SelectedAbility = "Violin Ability on Cooldown";
             }
         }
         //Swapping Melody Ability 
@@ -375,7 +376,8 @@ public class FPSMovement : MonoBehaviour
         }
         if (CoinsRemaining <= 0)
         {
-            print("No coins Remaining");
+            CoinCounter.instance.OutofCoins();
+
         }
       /*  if (canUseAbility_Music == true)
         {
@@ -392,12 +394,14 @@ public class FPSMovement : MonoBehaviour
         {
             if (AbilityChange.mode == Violin.ViolinMode.Projectile)
             {
-                Checker.AbilityText = "Distraction";
+                Checker.currentAbility = "Distraction";
+                SelectedAbility = "Distraction";
                 Debug.Log("Ability Changed to Distraction");
                 AbilityChange.mode = Violin.ViolinMode.Distraction;
             }
             else if (AbilityChange.mode == Violin.ViolinMode.Distraction)
             {
+                Checker.currentAbility = "Deafen";
                 Debug.Log("Ability Changed to Projectile");
                 AbilityChange.mode = Violin.ViolinMode.Projectile;
             }
