@@ -62,6 +62,7 @@ public class FPSMovement : MonoBehaviour
     //Current Player State 
     
     public string PlayerState;
+
     /*
     State 0 = Crouching
     State 1 = Standing
@@ -83,6 +84,10 @@ public class FPSMovement : MonoBehaviour
     public float MusicAbilityProjectileActiveSeconds;
     public float MusicAbilityProjectileCooldownSeconds;
 
+    //Current Selected Ability 
+
+    public string SelectedAbility;
+    public AbilityChecking Checker;
 
     // ability activation and delay - Coin
 
@@ -377,7 +382,7 @@ public class FPSMovement : MonoBehaviour
             canUseAbility_Coin = false;
         }*/
     }
-    void MelodySwap()
+    public void MelodySwap()
     {
         Violin AbilityChange;
         AbilityChange = GetComponent<Violin>();
@@ -387,6 +392,7 @@ public class FPSMovement : MonoBehaviour
         {
             if (AbilityChange.mode == Violin.ViolinMode.Projectile)
             {
+                Checker.AbilityText = "Distraction";
                 Debug.Log("Ability Changed to Distraction");
                 AbilityChange.mode = Violin.ViolinMode.Distraction;
             }
