@@ -165,7 +165,10 @@ public class FPSMovement : MonoBehaviour
                         break;
 
                     case ViolinMode.Distraction:
+                        soundBox.DistractionActive = true;
                         AbilityChange.Distraction();
+                        Debug.Log("Inactive");
+                        soundBox.DistractionActive = false;
                         StartCoroutine(DistractionMusicAbilityCooldown());
                         break;
                 }

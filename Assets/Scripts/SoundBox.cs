@@ -19,17 +19,27 @@ public class SoundBox : MonoBehaviour
     {
         NavmeshAgentScript navmeshComponent = col.GetComponent<NavmeshAgentScript>();
         NavMeshAgentSentry navmeshComponentSEN = col.GetComponent<NavMeshAgentSentry>();
+
+
         if (navmeshComponent != null && navmeshComponent.AIState == 8) 
         {
             navmeshComponent.AIState = 4; //Walking near deafened enemy
+        }else if (navmeshComponent != null && DistractionActive == true)
+        {
+            navmeshComponent.AIState = 2; //Investigate Distraction
         }else if (navmeshComponent != null)
         {
-            navmeshComponent.AIState = 1; //Walking near enemy normally
+            navmeshComponent.AIState = 1; // Go to player Position
         }
+
 
         if (navmeshComponentSEN != null && navmeshComponentSEN.AIState == 8)
         {
             navmeshComponentSEN.AIState = 4;
+        }else if (navmeshComponentSEN != null && DistractionActive == true)
+        {
+            navmeshComponentSEN.AIState = 2;
+
         }else if (navmeshComponentSEN != null)
         {
             navmeshComponentSEN.AIState = 1;
