@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.ProBuilder.MeshOperations;
 using static Violin;
@@ -81,6 +82,7 @@ public class FPSMovement : MonoBehaviour
     public float CoinabilityCooldownSeconds;
 
     public int CoinsRemaining;
+    public int value;
 
     // Start is called before the first frame update
     void Awake()
@@ -331,15 +333,19 @@ public class FPSMovement : MonoBehaviour
     }
     void FindCoinThrow()
     {
-       /* if (canUseAbility_Music == true)
-        {
-            canUseAbility_Coin = false;
-        }*/
+        /* if (canUseAbility_Music == true)
+         {
+             canUseAbility_Coin = false;
+         }*/
+       // CoinCounter coinCounter;
+       // coinCounter = GetComponent<CoinCounter>();
 
         if (AbilityActive_Coin && CoinsRemaining > 0)
         {
             CoinThrowposition.CoinThrow();
-            CoinsRemaining = CoinsRemaining - 1; 
+            CoinsRemaining = CoinsRemaining - 1;
+            CoinCounter.instance.LoseCoins(value);
+            
         }
         if (CoinsRemaining <= 0)
         {
