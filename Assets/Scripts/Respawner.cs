@@ -77,11 +77,11 @@ public class Respawner : MonoBehaviour
         {
             FPSlc.VisibilityInitialised();
         }
-        Coins.CoinsRemaining = 3;
-        Count.currentCoins = 3;
 
         //Invoke("ReactivateController", 0.5f);
         ReactivateController();
+        Coins.CoinsRemaining = 3;
+        Count.currentCoins = 3;
     }
 
     public void UpdateCheckPoints()
