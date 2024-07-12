@@ -15,6 +15,8 @@ public class Respawner : MonoBehaviour
     private GameObject lightChecker;
     private FPSLightCheck FPSlc;
     public FPSMovement Coins;
+    public CoinCounter Count;
+
 
 
     public Material activeMaterial;
@@ -29,6 +31,10 @@ public class Respawner : MonoBehaviour
         enemyManager = GetComponent<EnemyManager>();
         lightChecker = GameObject.Find("lightChecker");
         FPSlc = lightChecker.GetComponent<FPSLightCheck>();
+
+        Coins = player.gameObject.GetComponent<FPSMovement>();
+
+
 
         startingPoint = GameObject.FindGameObjectWithTag("StartPoint");
         if (currentCheckpoint == null)
@@ -71,6 +77,8 @@ public class Respawner : MonoBehaviour
         {
             FPSlc.VisibilityInitialised();
         }
+        Coins.CoinsRemaining = 3;
+        Count.currentCoins = 3;
 
         //Invoke("ReactivateController", 0.5f);
         ReactivateController();
