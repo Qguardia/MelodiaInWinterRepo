@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
-using Unity.PlasticSCM.Editor.WebApi;
+//using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.ProBuilder.MeshOperations;
 using static Violin;
@@ -187,7 +187,7 @@ public class FPSMovement : MonoBehaviour
                         AbilityChange.Distraction();
                         Debug.Log("Inactive");
                         soundBox.DistractionActive = false;
-                        StartCoroutine(DistractionMusicAbilityCooldown());
+                        StartCoroutine(ViolinProjectileCoroutine());
                         break;
                 }
             }

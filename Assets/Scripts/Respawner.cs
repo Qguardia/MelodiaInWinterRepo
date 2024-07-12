@@ -14,6 +14,7 @@ public class Respawner : MonoBehaviour
     private EnemyManager enemyManager;
     private GameObject lightChecker;
     private FPSLightCheck FPSlc;
+    public FPSMovement Coins;
 
 
     public Material activeMaterial;
